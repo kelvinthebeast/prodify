@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kelvinthebeast/prodify#readme",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pug": "^3.0.3"
   },
