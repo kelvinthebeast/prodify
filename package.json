@@ -1,0 +1,28 @@
+{
+  "name": "prodify",
+  "version": "1.0.0",
+  "description": "**Prodify** is a flexible, modern, and scalable web platform designed to help you manage products with ease.  \r This project is a complete rewrite of an old one — built from scratch with the goal of understanding every line of code, not just making it work.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --inspect index.js",
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvinthebeast/prodify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelvinthebeast/prodify/issues"
+  },
+  "homepage": "https://github.com/kelvinthebeast/prodify#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
