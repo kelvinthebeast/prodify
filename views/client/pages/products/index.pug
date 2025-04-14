@@ -8,53 +8,18 @@ block main
       .col-12
         +box-head("products page")
 
+    
+
+
+
     .row
-      //- Fake Product 1
-      .col-md-4.mb-4
-        .product-item.shadow-sm.p-3.border.rounded
-          img.product-img(src="https://tse4.mm.bing.net/th/id/OIP.Pg9NWImtn-7juNv7LAp8-QHaEK?rs=1&pid=ImgDetMain", alt="Product 1")
-          .inner-content.mt-3
-            h3.product-title Tai nghe Bluetooth
-            .price-box
-              span.inner-price-new.text-danger.me-2 49$
-              span.inner-price-old.text-muted.text-decoration-line-through 79$
-            .discount.text-success.mt-1 38% off
-
-      //- Fake Product 2
-      .col-md-4.mb-4
-        .product-item.shadow-sm.p-3.border.rounded
-          img.product-img(src="https://tse4.mm.bing.net/th/id/OIP.Pg9NWImtn-7juNv7LAp8-QHaEK?rs=1&pid=ImgDetMain", alt="Product 2")
-          .inner-content.mt-3
-            h3.product-title Bàn phím cơ LED
-            .price-box
-              span.inner-price-new.text-danger.me-2 69$
-              span.inner-price-old.text-muted.text-decoration-line-through 89$
-            .discount.text-success.mt-1 22% off
-
-      //- Fake Product 3
-      .col-md-4.mb-4
-        .product-item.shadow-sm.p-3.border.rounded
-          img.product-img(src="https://tse4.mm.bing.net/th/id/OIP.Pg9NWImtn-7juNv7LAp8-QHaEK?rs=1&pid=ImgDetMain", alt="Product 3")
-          .inner-content.mt-3
-            h3.product-title Chuột gaming RGB
-            .price-box
-              span.inner-price-new.text-danger.me-2 35$
-              span.inner-price-old.text-muted.text-decoration-line-through 59$
-            .discount.text-success.mt-1 41% off
-
-//-   .container.my-5
-//-     .row
-//-       .col-12
-//-         +box-head("Danh sách sản phẩm")
-
-//-     .row
-//-       each item in products
-//-         .col-md-4.mb-4
-//-           .product-item.shadow-sm.p-3.border.rounded
-//-             img.product-img(src=item.thumbnail, alt=item.title)
-//-             .inner-content.mt-3
-//-               h3.product-title #{item.title}
-//-               .price-box
-//-                 span.inner-price-new.text-danger.me-2 #{item.priceNew}$
-//-                 span.inner-price-old.text-muted.text-decoration-line-through #{item.price}$
-//-               .discount.text-success.mt-1 #{item.discountPercentage}% off
+      each item in products
+        .col-md-4.mb-4
+          .product-item.shadow-sm.p-3.border.rounded
+            img.product-img(src=item.thumbnail, alt=item.title)
+            .inner-content.mt-3
+              h3.product-title #{item.title}
+              .price-box
+                span.inner-price-new.text-danger.me-2 #{item.priceNew}$
+                span.inner-price-old.text-muted.text-decoration-line-through #{item.price}$
+              .discount.text-success.mt-1 #{item.discountPercentage}% off
