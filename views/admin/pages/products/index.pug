@@ -1,36 +1,62 @@
 extends ../../layouts/default.pug
 
 block main
-  h1 Danh sách sản phẩm
+  h1 Product List Page
 
   // Product List Table
+  //- .card.mb-3 
+    
+  //-   .card-header Filter and Find
+  //-   .card-body 
+  //-     .row
+  //-       .col-6.d-flex.gap-2
+  //-         each item in filterStatus 
+  //-           button(
+  //-             class=`btn btn-sm ml-1 me-1 btn-outline-success ${item.class}`,
+  //-             data-status=item.status
+  //-           ) #{item.name}
+      
+  //-       .col-6 
+  //-         form(id="form-search")
+  //-           .input-group
+  //-             input(
+  //-               type='text',
+  //-               placeholder="Nhập từ khóa",
+  //-               name="keywords",
+  //-               class="form-control",
+  //-               value=keyword
+  //-             )
+  //-           .input-group-append
+  //-             button(
+  //-               class="btn btn-success"
+  //-               type="submit"
+  //-             ) Tìm
   .card.mb-3 
-    //- .card-header Bộ lọc và tìm kiếm 
-    //- .card-body 
-    //-   .row
-    //-     .col-6
-    //-       each item in filterStatus 
-    //-         button(
-    //-           class=`btn btn-sm ml-1 btn-outline-success ${item.class}`,
-    //-           button-status=item.status
-    //-         ) #{item.name}
+  .card-header Filter and Find
 
-    //-     .col-6 
-    //-       form(id="form-search")
-    //-         .input-group
-    //-           input(
-    //-             type='text',
-    //-             placeholder="Nhập từ khóa",
-    //-             name="keywords",
-    //-             class="form-control",
-    //-             value=keyword
-    //-           )
-    //-         .input-group-append
-    //-           button(
-    //-             class="btn btn-success"
-    //-             type="submit"
-    //-           ) Tìm
+  .card-body 
+    .row.g-2
+      // Các nút lọc
+      .col-md-6
+        .d-flex.flex-wrap.gap-2
+          each item in filterStatus 
+            button.btn.btn-sm.btn-outline-success.flex-fill(
+              class=item.class,
+              data-status=item.status,
+              style="min-width: 100px;"
+            ) #{item.name}
 
+      // Ô tìm kiếm
+      .col-md-6
+        form#form-search
+          .input-group
+            input.form-control(
+              type='text',
+              placeholder="Enter keyword......",
+              name="keyword",
+              value=keyword
+            )
+            button.btn.btn-success(type="submit") Find
   .card.mb-3 
     .card-header List
     .card-body
@@ -48,14 +74,14 @@ block main
             tr
               td #{index + 1}
               td
-                img(src=item.thumbnail || '/path/to/default-image.jpg', width="100px" height="auto"alt="Thumbnail")
+                img(src=item.thumbnail || '/path/to/default-image.jpg', width="100px" height="auto" alt="Thumbnail")
               td #{item.title}
               td #{item.price}$
               td
                 if (item.status === "active")
                   a(href="#" class="badge badge-success") Active
                 else
-                  a(href="#" class="badge badge-danger") Inactive
+                  a(href="#" class="badge badge-warning text-dark") Inactive
               td 
-                button(class="btn btn-warning btn-sm") Edit
-                button(class="btn btn-danger btn-sm ml-1") Delete
+                button(class="btn btn-warning btn-sm text-dark") Edit
+                button(class="btn btn-danger btn-sm ms-2") Delete
