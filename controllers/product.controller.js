@@ -1,3 +1,3 @@
 module.exports.index = (req, res) => {
-  res.send("Products page (new)");
+  res.render("client/pages/products/index", { pageTitle: "Products" });
 }

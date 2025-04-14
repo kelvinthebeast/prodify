@@ -3,6 +3,7 @@ const app = express();
 const port = 6868;
 const route = require("./routes/client/index.route");
 require("dotenv").config();
+app.use(express.static("public"));
 
 console.log(process.env.PORT); // → 6868
 

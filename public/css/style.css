@@ -1,0 +1,126 @@
+/* ===== RESET CƠ BẢN ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  padding: 15px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.inner-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
+}
+
+.inner-menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.inner-menu li a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.inner-menu li a:hover {
+  color: #000;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #eaeaea;
+  padding: 20px 0;
+  box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.03);
+}
+
+.footer p {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .inner-menu ul {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+  }
+  .logo-title {
+      font-size: 20px;
+  }
+}
+/* Product */
+.product-item {
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.product-img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.price-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inner-price-new {
+  font-weight: bold;
+  color: #f35c5c;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #ff7676, #ffb86c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.inner-price-old {
+  font-size: 1.2rem;
+  color: #999;
+}
+
+.discount {
+  font-size: 1rem;
+  color: #28a745;
+  font-weight: 500;
+}
+
+/* End product */
