@@ -18,7 +18,7 @@ route(app);
 adminRoute(app);
 
 // locals variable
-app.locals.systemConfig = systemConfig.prefixAdmin;
+app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
 
 

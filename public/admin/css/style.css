@@ -1,0 +1,88 @@
+/* style.css */
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  color: #1e1e2f;
+}
+
+.sider {
+  width: 250px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.03);
+  height: 100vh;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 10;
+  border-radius: 0 20px 20px 0;
+}
+
+.inner-menu {
+  margin-top: 30px;
+}
+
+.inner-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-menu ul li {
+  margin-bottom: 16px;
+}
+
+.inner-menu ul li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.inner-menu ul li a:hover {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  transform: translateX(6px);
+}
+
+.inner-menu ul li a.active {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 #3b82f6;
+}
+
+.main {
+  margin-left: 270px;
+  padding: 40px;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* Optional: Header style */
+header {
+  background-color: #ffffff;
+  padding: 20px 40px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+.badge-success {
+  background-color: #28a745; /* màu xanh lá cây chuẩn Bootstrap 4 */
+  color: white;
+}
