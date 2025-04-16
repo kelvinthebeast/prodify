@@ -1,36 +1,11 @@
 extends ../../layouts/default.pug
-
+include ../../mixins/filter-status.pug
+include ../../mixins/search.pug
 block main
   h1 Product List Page
 
   // Product List Table
-  //- .card.mb-3 
-    
-  //-   .card-header Filter and Find
-  //-   .card-body 
-  //-     .row
-  //-       .col-6.d-flex.gap-2
-  //-         each item in filterStatus 
-  //-           button(
-  //-             class=`btn btn-sm ml-1 me-1 btn-outline-success ${item.class}`,
-  //-             data-status=item.status
-  //-           ) #{item.name}
-      
-  //-       .col-6 
-  //-         form(id="form-search")
-  //-           .input-group
-  //-             input(
-  //-               type='text',
-  //-               placeholder="Nhập từ khóa",
-  //-               name="keywords",
-  //-               class="form-control",
-  //-               value=keyword
-  //-             )
-  //-           .input-group-append
-  //-             button(
-  //-               class="btn btn-success"
-  //-               type="submit"
-  //-             ) Tìm
+  
   .card.mb-3 
   .card-header Filter and Find
 
@@ -39,24 +14,11 @@ block main
       // Các nút lọc
       .col-md-6
         .d-flex.flex-wrap.gap-2
-          each item in filterStatus 
-            button.btn.btn-sm.btn-outline-success.flex-fill(
-              class=item.class,
-              data-status=item.status,
-              style="min-width: 100px;"
-            ) #{item.name}
-
+          +filter-status(filterStatus)
       // Ô tìm kiếm
       .col-md-6
-        form#form-search
-          .input-group
-            input.form-control(
-              type='text',
-              placeholder="Enter keyword......",
-              name="keyword",
-              value=keyword
-            )
-            button.btn.btn-success(type="submit") Find
+          +search(keyword)
+        
   .card.mb-3 
     .card-header List
     .card-body
