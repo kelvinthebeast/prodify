@@ -40,3 +40,16 @@ if (formSearch) {
   })
 }
 // #form-search
+
+// Pagination when click on page number it return new url with page number
+const buttonPagination = document.querySelectorAll("[button-pagination]");
+buttonPagination.forEach(button => {
+  button.addEventListener("click", ()=> {
+    const currentUrl = new URL(window.location.href);
+    const page = button.getAttribute("button-pagination");
+    currentUrl.searchParams.set("page", page);
+    window.location.href = currentUrl.href;
+  })
+})
+
+// End pagination

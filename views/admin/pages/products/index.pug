@@ -1,6 +1,8 @@
 extends ../../layouts/default.pug
 include ../../mixins/filter-status.pug
 include ../../mixins/search.pug
+include ../../mixins/pagination.pug
+
 block main
   h1 Product List Page
 
@@ -47,3 +49,4 @@ block main
               td 
                 button(class="btn btn-warning btn-sm text-dark") Edit
                 button(class="btn btn-danger btn-sm ms-2") Delete
+  +pagination(pagination)
