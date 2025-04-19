@@ -1,4 +1,5 @@
 const express = require('express');
+var methodOverride = require('method-override')
 const app = express();
 const port = 6868;
 const route = require("./routes/client/index.route");
@@ -9,6 +10,9 @@ const mongoose = require("mongoose");
 const database = require("./config/database");
 console.log(process.env.PORT); // → 6868
 
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
 const systemConfig = require("./config/system");
 // Connect database
 

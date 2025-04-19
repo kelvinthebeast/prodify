@@ -45,7 +45,16 @@ module.exports.index = async (req, res) => {
      pagination: objectPagination
     });
 }
-
-module.exports.create = (req, res) => {
-  res.send("Create page (new)");
+/**
+ * [GET] /admin/products/change-status/:status/:id
+ * @description Change the status of a product when click
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.changeStatus = async (req, res) => {
+  const status = req.params.status;
+  const id = req.params.id;
+  
+  res.send(`${status} - ${id}`);  
+  
 }
