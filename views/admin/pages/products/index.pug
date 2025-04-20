@@ -47,7 +47,7 @@ block main
                     data-status=item.status
                     data-id = item.id
                     button-change-status
-                    href="javascript:;" class="badge badge-success button-change-status"
+                    href=`javascript:;` class="badge badge-success button-change-status"
                     ) Active
                 else
                   a(
@@ -63,7 +63,7 @@ block main
   form(
    
     action=""
-    method="Post"
+    method="post"
     data-path=`${prefixAdmin}/products/change-status`
     
     id="form-change-status"
