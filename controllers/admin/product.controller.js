@@ -58,3 +58,11 @@ module.exports.changeStatus = async (req, res) => {
   res.redirect("/admin/products");
   
 }
+
+
+module.exports.changeMultiStatus = async (req, res) => {
+  console.log(req.body);
+
+
+  res.send("ok")
+}

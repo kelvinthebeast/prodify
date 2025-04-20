@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const dataPath = formChangeStatus.getAttribute("data-path");
-    console.log("dataPath: ", dataPath);
+    // console.log("dataPath: ", dataPath);
 
     buttonChangeStatus.forEach((button) => {
       button.addEventListener("click", (event) => {
