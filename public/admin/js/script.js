@@ -87,16 +87,24 @@ document.addEventListener("DOMContentLoaded", ()=> {
     // Handle check each input not check all
 
     const formChangeMulti = document.querySelector("[form-change-multi]");
-    formChangeMulti.addEventListener("submit", (event)=> {
+    formChangeMulti.addEventListener("submit", (event) => {
+      // console.log(event)
       event.preventDefault();
       const checkBoxMulti = document.querySelector("[checkbox-multi]");
       const checkedInputs = checkBoxMulti.querySelectorAll("input[name='id']:checked");
+      console.log("checkedInputs: ", checkedInputs);
+
+      const typeChange = event.target.elements.type.value;
+        console.log("typeChange: ", typeChange);
+
+        // Handle confirmation for delete-all action
+      
 
       if (checkedInputs.length > 0) {
         const needChangeIds = [];
       
         const inputIds = formChangeMulti.querySelector("input[name='ids']");
-      
+        console.log("inputIds: ", inputIds);
         checkedInputs.forEach(input => {
           const idOfChangeCheckbox = input.getAttribute("value");
           needChangeIds.push(idOfChangeCheckbox);
@@ -105,7 +113,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         inputIds.value = needChangeIds.join(",");
         formChangeMulti.submit();
       } else {
-        alert("Vui lòng chọn ít nhất 1 sản phẩm để thay đổi trạng thái!");
+        alert("Need to select 1 product!");
       }
       
 

@@ -1,13 +1,10 @@
 mixin search(keyword)
-  form#form-search(class="w-100")
-    .input-group.shadow-sm.rounded-pill.overflow-hidden
-      input.form-control.border-0.ps-4.py-2(
-        type="text",
-        placeholder="🔍 Enter keyword...",
-        name="keyword",
-        value=keyword,
-        style="background-color: #f8f9fa;"
-      )
-      button.btn.find-btn-modern(
-        type="submit"
-      ) Find
+    form#form-search
+          .input-group
+            input.form-control(
+              type='text',
+              placeholder="Enter keyword......",
+              name="keyword",
+              value=keyword
+            )
+            button.btn.btn-success(type="submit") Find
