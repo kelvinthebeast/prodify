@@ -135,3 +135,78 @@ header {
 }
 
 /* End pagination */
+/* Form change multi */
+/* Modern style for select and button */
+.modern-select {
+  border-radius: 0.6rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid #ced4da;
+  background-color: #f8f9fa;
+  transition: all 0.2s ease-in-out;
+}
+
+.modern-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.modern-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.4rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.modern-btn:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+/* End form change multi */
+/* Filter buttons modern style */
+.modern-filter-btn {
+  border-radius: 999px;
+  padding: 0.35rem 1.2rem;
+  font-weight: 500;
+  border: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: all 0.25s ease-in-out;
+}
+
+.modern-filter-btn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+  box-shadow: 0 3px 10px rgba(13, 110, 253, 0.15);
+}
+
+.modern-filter-btn.active,
+.modern-filter-btn.active:hover {
+  background-color: #198754;
+  border-color: #198754;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(25, 135, 84, 0.2);
+}
+/* search */
+.find-btn-modern {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6); /* Indigo → Blue */
+  color: #fff;
+  font-weight: 500;
+  padding: 0.45rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.find-btn-modern:hover {
+  background: linear-gradient(135deg, #3730a3, #2563eb);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+
+/* End search */

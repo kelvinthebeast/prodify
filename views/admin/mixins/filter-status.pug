@@ -1,10 +1,11 @@
 mixin filter-status(filterStatus)
-    each item in filterStatus 
-                button.btn.btn-sm.btn-outline-success.flex-fill(
-                  class=item.class,
-                  data-status=item.status,
-                  style="min-width: 100px;"
-                ) #{item.name}
+  each item in filterStatus 
+    button.btn.btn-sm.modern-filter-btn(
+      class=item.class,
+      data-status=item.status,
+      style="min-width: 110px;"
+    ) #{item.name}
+
 
     //- each item in filterStatus
     //-             button(class=`btn btn-sm ml-1 btn-outline-success ${item.class}`

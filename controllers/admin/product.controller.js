@@ -46,7 +46,7 @@ module.exports.index = async (req, res) => {
     });
 }
 /**
- * [GET] /admin/products/change-status/:status/:id
+ * [PATCH] /admin/products/change-status/:status/:id
  * @description Change the status of a product when click
  * @param {*} req 
  * @param {*} res 
@@ -60,7 +60,12 @@ module.exports.changeStatus = async (req, res) => {
   
 }
 
-
+/**
+ * [PATCH] /admin/products/change-multi
+ * @description Change the status of multiple products when click
+ * @param {*} req 
+ * @param {*} res 
+ */
 module.exports.changeMultiStatus = async (req, res) => {
   // console.log("changeMultiStatus: ", req.body);
   const type = req.body.type;
@@ -77,6 +82,13 @@ module.exports.changeMultiStatus = async (req, res) => {
     default:
       break;
   }
+  res.redirect(req.headers.referer);
+
+}
+
+module.exports.deleteOneProduct = async (req, res) => {
+  const id = req.params.id;
+  await Product.updateOne({_id: id}, { deleted: true });
   res.redirect(req.headers.referer);
 
 }

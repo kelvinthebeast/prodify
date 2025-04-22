@@ -34,5 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // End change-status
 
+// Delete product
+const buttonDeleteProduct = document.querySelectorAll("[button-delete]");
+
+if (buttonDeleteProduct.length > 0 )  {
+  buttonDeleteProduct.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const isConfirm = confirm("Do you want to delete this product?");
+
+      if (isConfirm) {
+        const id = button.getAttribute("data-id")
+        const formDeleteProduct = document.querySelector("#form-delete-product");
+        const path = formDeleteProduct.getAttribute("data-path");
+        const action = path + `/${id}?_method=PATCH`;
+        // console.log("action: ", action);
+        formDeleteProduct.setAttribute("action", action);
+        formDeleteProduct.submit();
+        
+      }
+      
+    })
+  })
+}
+
+// End delete product
+
 
 

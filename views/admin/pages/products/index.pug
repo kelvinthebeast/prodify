@@ -70,7 +70,11 @@ block main
                     ) Inactive
               td 
                 button(class="btn btn-warning btn-sm text-dark") Edit
-                button(class="btn btn-danger btn-sm ms-2") Delete
+                button(
+                  class="btn btn-danger btn-sm ms-2"
+                  button-delete 
+                  data-id = item.id
+                  ) Delete
   +pagination(pagination)
   form(
    
@@ -79,6 +83,14 @@ block main
     data-path=`${prefixAdmin}/products/change-status`
     
     id="form-change-status"
+    )
+  form(
+   
+    action=""
+    method="post"
+    data-path=`${prefixAdmin}/products/delete`
+    
+    id="form-delete-product"
     )
 
 
