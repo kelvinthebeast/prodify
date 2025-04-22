@@ -104,6 +104,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
       
         inputIds.value = needChangeIds.join(",");
         formChangeMulti.submit();
+      } else {
+        alert("Vui lòng chọn ít nhất 1 sản phẩm để thay đổi trạng thái!");
       }
       
 
