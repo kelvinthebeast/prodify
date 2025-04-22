@@ -62,7 +62,7 @@ module.exports.changeStatus = async (req, res) => {
 
 
 module.exports.changeMultiStatus = async (req, res) => {
-  console.log("changeMultiStatus: ", req.body);
+  // console.log("changeMultiStatus: ", req.body);
   const type = req.body.type;
   const ids = req.body.ids.split(",").map(id => id.trim());
 
