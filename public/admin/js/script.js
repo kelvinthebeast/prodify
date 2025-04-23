@@ -92,10 +92,10 @@ document.addEventListener("DOMContentLoaded", ()=> {
       event.preventDefault();
       const checkBoxMulti = document.querySelector("[checkbox-multi]");
       const checkedInputs = checkBoxMulti.querySelectorAll("input[name='id']:checked");
-      console.log("checkedInputs: ", checkedInputs);
+      
 
       const typeChange = event.target.elements.type.value;
-        console.log("typeChange: ", typeChange);
+        
 
         // Handle confirmation for delete-all action
       
@@ -104,10 +104,20 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const needChangeIds = [];
       
         const inputIds = formChangeMulti.querySelector("input[name='ids']");
-        console.log("inputIds: ", inputIds);
+        
         checkedInputs.forEach(input => {
           const idOfChangeCheckbox = input.getAttribute("value");
-          needChangeIds.push(idOfChangeCheckbox);
+          
+          if (typeChange == "change-position") {
+            const position = input.closest("tr")
+            .querySelector("input[name='position']").value;
+            // console.log("position: ", position);
+            needChangeIds.push(`${idOfChangeCheckbox}-${position}`);
+
+          } else {
+            needChangeIds.push(idOfChangeCheckbox);
+
+          }
         });
       
         inputIds.value = needChangeIds.join(",");

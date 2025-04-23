@@ -9,7 +9,7 @@ const searchHelper = require("../../helpers/search")
  */
 
 
-module.exports.index = async (req, res) => { 
+module.exports.index = async (req, res) => {
   const filterStatus = filterStatusHelper(req.query);
   const find = {
     deleted: false
@@ -36,14 +36,17 @@ module.exports.index = async (req, res) => {
   const totalPage = Math.ceil(countProduct / objectPagination.limitItems);
   objectPagination.totalPage = totalPage;
   // ENd pagination
-  const products = await Product.find(find).limit(objectPagination.limitItems).skip(objectPagination.skipItems).sort({ createdAt: -1 });
+  const products = await Product.find(find)
+                                .limit(objectPagination.limitItems)
+                                .skip(objectPagination.skipItems)
+                                .sort({ position: "desc" });
   res.render("admin/pages/products/index", {
-     pageTitle: "Product",
-     products: products,
-     filterStatus: filterStatus,
-     keyword: objectSearch.keyword,
-     pagination: objectPagination
-    });
+    pageTitle: "Product",
+    products: products,
+    filterStatus: filterStatus,
+    keyword: objectSearch.keyword,
+    pagination: objectPagination
+  });
 }
 /**
  * [PATCH] /admin/products/change-status/:status/:id
@@ -57,7 +60,7 @@ module.exports.changeStatus = async (req, res) => {
   await Product.updateOne({ _id: id }, { status: status });
   res.redirect(req.headers.referer);
 
-  
+
 }
 
 /**
@@ -84,6 +87,19 @@ module.exports.changeMultiStatus = async (req, res) => {
         deletedAt: new Date()
       });
       break;
+    case "change-position":
+      // console.log("change-position: ", req.body.ids); // id-position
+      for (const item of ids) {
+        // console.log("item: ", item.split("-")); // id-position
+        const [id, position] = item.split("-");
+        let positionNumber = parseInt(position);
+
+
+        await Product.updateOne({ _id: id }, { position: positionNumber });
+      }
+
+
+      break;
     default:
       break;
   }
@@ -93,9 +109,10 @@ module.exports.changeMultiStatus = async (req, res) => {
 
 module.exports.deleteOneProduct = async (req, res) => {
   const id = req.params.id;
-  await Product.updateOne({_id: id}, {
-     deleted: true,
-     deletedAt: new Date()});
+  await Product.updateOne({ _id: id }, {
+    deleted: true,
+    deletedAt: new Date()
+  });
   res.redirect(req.headers.referer);
 
 }

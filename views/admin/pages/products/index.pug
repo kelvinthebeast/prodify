@@ -40,6 +40,7 @@ block main
             th Image
             th Product's Name
             th Price
+            th Position
             th Status
             th Action
         tbody
@@ -53,6 +54,8 @@ block main
                 img(src=item.thumbnail || '/path/to/default-image.jpg', width="100px" height="auto" alt="Thumbnail")
               td #{item.title}
               td #{item.price}$
+              td
+                input(type="number", width="60px", name="position", value=item.position, class="form-control form-control-sm")
               td
                 if (item.status === "active")
                   a(
