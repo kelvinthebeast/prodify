@@ -210,3 +210,59 @@ header {
 
 
 /* End search */
+/* SHow alert */
+/* Container wrapper (nếu có .message.success quanh div.alert) */
+.message.success {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+}
+
+/* Alert cơ bản */
+.message.success .alert {
+  display: flex;
+  align-items: center;
+  background-color: #e6f9f0;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-weight: 500;
+  transition: opacity 2.5s ease, transform 2.5s ease;
+}
+
+/* Khi ẩn */
+.message.success .alert.hide-alert {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* (Tuỳ chọn) Thêm icon ở đầu alert */
+.message.success .alert::before {
+  content: "✅";
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* (Tuỳ chọn) Nút đóng nếu cần */
+.message.success .alert .btn-close {
+  margin-left: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.message.success .alert .btn-close:hover {
+  opacity: 1;
+}
+
+/* End show alert */

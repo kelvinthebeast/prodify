@@ -1,6 +1,9 @@
 const express = require('express');
 var methodOverride = require('method-override')
 const bodyParser = require('body-parser')
+var flash = require('express-flash')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
 const app = express();
 const port = 6868;
 const route = require("./routes/client/index.route");
@@ -14,7 +17,10 @@ console.log(process.env.PORT); // → 6868
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded())
-
+// Flash
+app.use(cookieParser('keyboard cat'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
 const systemConfig = require("./config/system");

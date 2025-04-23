@@ -58,6 +58,7 @@ module.exports.changeStatus = async (req, res) => {
   const status = req.params.status;
   const id = req.params.id;
   await Product.updateOne({ _id: id }, { status: status });
+  req.flash("success", "Change status successfully!");
   res.redirect(req.headers.referer);
 
 
@@ -77,15 +78,18 @@ module.exports.changeMultiStatus = async (req, res) => {
   switch (type) {
     case "active":
       await Product.updateMany({ _id: { $in: ids } }, { status: "active" });
+      req.flash("success", `Change ${ids.length} status(s) successfully!`);
       break;
     case "inactive":
       await Product.updateMany({ _id: { $in: ids } }, { status: "inactive" });
+      req.flash("success", `Change ${ids.length} status(s) successfully!`);
       break;
     case "delete-all":
       await Product.updateMany({ _id: { $in: ids } }, {
         deleted: true,
         deletedAt: new Date()
       });
+      req.flash("success", `Delete ${ids.length} status(s) successfully!`);
       break;
     case "change-position":
       // console.log("change-position: ", req.body.ids); // id-position
@@ -96,6 +100,7 @@ module.exports.changeMultiStatus = async (req, res) => {
 
 
         await Product.updateOne({ _id: id }, { position: positionNumber });
+        req.flash("success", `Change position ${ids.length} status(s) successfully!`);
       }
 
 
@@ -113,6 +118,7 @@ module.exports.deleteOneProduct = async (req, res) => {
     deleted: true,
     deletedAt: new Date()
   });
+  req.flash("success", `delete product successfully!`);
   res.redirect(req.headers.referer);
 
 }

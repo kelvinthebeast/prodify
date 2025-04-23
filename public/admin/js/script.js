@@ -136,3 +136,14 @@ document.addEventListener("DOMContentLoaded", ()=> {
   
 })
 // End check box multi
+// Show alert
+const showAlert = document.querySelector("[show-alert]");
+if (showAlert) {
+  const time = showAlert.querySelector("[data-time]");
+
+
+  setTimeout(() => {
+    showAlert.classList.add("hide-alert");
+  }, parseInt(time));
+}
+// End show showAlert

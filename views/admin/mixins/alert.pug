@@ -1,0 +1,9 @@
+mixin alert-success(time)
+  - if (messages.success)
+      .message.success
+        div(
+          class="alert alert-success"
+          role="alert"
+          data-time='5000'
+          show-alert
+        ) #{messages.success} 
