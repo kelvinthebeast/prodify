@@ -16,7 +16,8 @@ console.log(process.env.PORT); // → 6868
 
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
 // Flash
 app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));

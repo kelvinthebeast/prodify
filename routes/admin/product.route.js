@@ -6,4 +6,9 @@ router.patch("/change-status/:status/:id", productController.changeStatus);
 router.patch("/change-multi", productController.changeMultiStatus);
 
 router.patch("/delete/:id", productController.deleteOneProduct);
+
+
+router.get("/create", productController.getCreateProductPage)
+
+router.post("/create", productController.postCreateProductPage)
 module.exports = router;

@@ -27,6 +27,11 @@ block main
       // Ô tìm kiếm
       .col-md-6
           +search(keyword)
+      .col-md-6 
+         a(
+            href=`${prefixAdmin}/products/create`
+            class="btn btn-outline-success"
+                ) + Add new
         
   .card.mb-3 
     .card-header List

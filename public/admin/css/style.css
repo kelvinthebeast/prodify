@@ -266,3 +266,64 @@ header {
 }
 
 /* End show alert */
+/* create form */
+#form-create-product {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#form-create-product label {
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  display: block;
+  color: #333;
+}
+
+#form-create-product input,
+#form-create-product textarea,
+#form-create-product select {
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+#form-create-product input:focus,
+#form-create-product textarea:focus,
+#form-create-product select:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
+
+#form-create-product .btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 0.6rem 2rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+#form-create-product .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.image-preview {
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* End crete form for product */

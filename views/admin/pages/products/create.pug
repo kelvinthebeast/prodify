@@ -1,0 +1,101 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+//- include ../../mixins/select-tree.pug
+
+
+block main
+    +alert-error(5000)
+    h1(class='mb-4') Form add new product
+       
+    //-  enctype="multipart/form-data"
+    form(
+        action=`${prefixAdmin}/products/create`
+        id="form-create-product"
+        method="POST"
+    )
+    
+        div(class="form-group")
+            label(for="title") Title 
+            input(
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                required
+            )
+        
+        div(class="form-group")
+            label(for="desc") Desc
+            textarea(
+                class="form-control textarea-mce"
+                id="desc"
+                name="description"
+                rows="5"
+            )
+        //- div(class="form-group")
+        //-     label(for="product_category_id") Danh mục
+        //-     select(
+        //-         name="product_category_id"
+        //-         id="product_category_id"
+        //-         class="form-control"
+        //-     )
+        //-         option(value="") -- Chọn danh mục --
+        //-         if (category)
+        //-             +select-tree(category)
+        //- div(class="form-group form-check form-check-inline")
+        //-     input(
+        //-         type="radio"
+        //-         class="form-check-input"
+        //-         id="featured1"
+        //-         name="featured"
+        //-         value="1"
+        //-     )
+        //-     label(for="featured1" class="form-check-label") Nổi bật
+        //-     div(class="form-group form-check form-check-inline")
+        //-     input(
+        //-         type="radio"
+        //-         class="form-check-input"
+        //-         id="featured0"
+        //-         name="featured"
+        //-         value="0"
+        //-         checked
+        //-     )
+        //-     label(for="featured0" class="form-check-label") Không
+
+
+        div.form-group
+            label(for="price") Price
+            input(type="number", class="form-control", id="price", name="price", value="", min="0")
+
+        div.form-group
+            label(for="discount") % Discount
+            input(type="number", class="form-control", id="discount", name="discountPercentage", value="", min="0")
+
+        //- div(class='form-group' 
+        //-     upload-image
+        //-     )
+        //-     label(for="thumbnail") Ảnh
+        //-     input(type="file", class="form-control-file", id="thumbnail", name="thumbnail", accept="image/*", enctype="multipart/form-data", upload-image-input)
+        //-     img(src="", alt="", upload-image-preview, class="image-preview")
+
+
+
+        div.form-group
+            label(for="position") Position
+            input(type="number", class="form-control", id="position", name="position", placeholder="Tự động tăng", min="1")
+        
+        div.form-group.form-check.form-check-inline
+            input(type='radio', class='form-check-input', id='statusActive', name='status', value='active', checked)
+            label(for='statusActive', class='form-check-label') Active
+
+        div.form-group.form-check.form-check-inline
+            input(type='radio', class='form-check-input', id='statusInActive', name='status', value='inactive')
+            label(for='statusInActive', class='form-check-label') Inactive
+        
+        div(class="form-group")
+            button(
+                type="submit"
+                class="btn btn-primary"
+            ) Add new product
+
+    script(src="/admin/js/product.js")

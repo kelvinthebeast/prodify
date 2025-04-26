@@ -122,3 +122,32 @@ module.exports.deleteOneProduct = async (req, res) => {
   res.redirect(req.headers.referer);
 
 }
+
+
+module.exports.getCreateProductPage = (req, res) => {
+  res.render("admin/pages/products/create")
+}
+
+module.exports.postCreateProductPage = async (req, res) => {
+
+  console.log(req.body)
+  req.body.price = parseInt(req.body.price) || 0
+  req.body.discountPercentage = parseInt(req.body.discountPercentage) || 0
+
+  req.body.stock = parseInt(req.body.stock) || 0
+
+  if (!req.body.position) {
+    const countPosition = await Product.countDocuments();
+    req.body.position = countPosition + 1;
+    
+  } else {
+    req.body.position = parseInt(req.body.position)
+  }
+
+  
+  const newProduct = new Product(req.body);
+  await newProduct.save()
+  req.flash("success", "Add product successfully!")
+  res.redirect("/admin/products")
+ 
+}
