@@ -1,6 +1,7 @@
 const Product = require("../../models/product.model");
 const filterStatusHelper = require("../../helpers/filterStatus")
 const searchHelper = require("../../helpers/search")
+const systemConfig = require("../../config/system")
 /**
  * [GET] /admin/products
  * @description Render the product management page
@@ -111,7 +112,12 @@ module.exports.changeMultiStatus = async (req, res) => {
   res.redirect(req.headers.referer);
 
 }
-
+/**
+ * [Patch] or [Delete] /admin/products/delete_?method=patch
+ * when click button delete it gets id and update field deleted: true (soft delete)
+ * @param {*} req 
+ * @param {*} res 
+ */
 module.exports.deleteOneProduct = async (req, res) => {
   const id = req.params.id;
   await Product.updateOne({ _id: id }, {
@@ -122,15 +128,26 @@ module.exports.deleteOneProduct = async (req, res) => {
   res.redirect(req.headers.referer);
 
 }
-
+/**
+ * @description create new product 
+ * [Get] /admin/products/create
+ * @param {*} req 
+ * @param {*} res 
+ */
 
 module.exports.getCreateProductPage = (req, res) => {
   res.render("admin/pages/products/create")
 }
+/**
+ * @description handle when post data from form to server
+ * add new product using `new Product(req.body)`
+ * @param {*} req 
+ * @param {*} res 
+ */
 
 module.exports.postCreateProductPage = async (req, res) => {
 
-  console.log(req.body)
+  
   req.body.price = parseInt(req.body.price) || 0
   req.body.discountPercentage = parseInt(req.body.discountPercentage) || 0
 
@@ -148,6 +165,7 @@ module.exports.postCreateProductPage = async (req, res) => {
   const newProduct = new Product(req.body);
   await newProduct.save()
   req.flash("success", "Add product successfully!")
-  res.redirect("/admin/products")
+  res.redirect(`${systemConfig.prefixAdmin}/products`)
+  
  
 }

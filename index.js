@@ -14,6 +14,10 @@ const mongoose = require("mongoose");
 const database = require("./config/database");
 console.log(process.env.PORT); // → 6868
 
+// Multer upload photo
+const multer  = require('multer')
+const upload = multer({ dest: '.public/uploads/' })
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
