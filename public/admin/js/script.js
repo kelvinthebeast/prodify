@@ -154,14 +154,36 @@ const uploadImage = document.querySelector('[upload-image]')
 if (uploadImage) {
   const uploadImageInput = uploadImage.querySelector('[upload-image-input]')
   const uploadImagePreview = uploadImage.querySelector('[upload-image-preview]')
+  let currentObjectURL = null; 
   uploadImageInput.addEventListener("change", (event) => {
     const file = event.target.files[0]
     
     
     if (file) {
-      uploadImagePreview.src = URL.createObjectURL(file);
+      // Giải phóng object URL cũ nếu có
+      if (currentObjectURL) {
+        URL.revokeObjectURL(currentObjectURL);
+      }
+
+      // Tạo object URL mới và cập nhật preview
+      currentObjectURL = URL.createObjectURL(file);
+      uploadImagePreview.src = currentObjectURL;
     }
   })
   
 } 
 // End upload img preview
+
+// Close img preview
+
+// const closeImgButton = uploadImage.querySelector("[close-img-button]")
+// closeImgButton.addEventListener("click", (event) => {
+//   if (currentObjectURL) {
+//     URL.revokeObjectURL(currentObjectURL);
+//     currentObjectURL = null; // Set lại null sau khi revoke
+//   }
+
+//   uploadImagePreview.src = "";
+//   uploadImagePreview.style.backgroundImage = 'url("https://via.placeholder.com/250x250?text=No+Image")';
+// })
+// close img preview

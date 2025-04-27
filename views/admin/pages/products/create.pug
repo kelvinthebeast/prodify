@@ -72,12 +72,12 @@ block main
             label(for="discount") % Discount
             input(type="number", class="form-control", id="discount", name="discountPercentage", value="", min="0")
 
-        div(class='form-group' 
-            upload-image
-            )
+        div(class='form-group' upload-image)
             label(for="thumbnail") Photo
+            div(class="image-container")
+             img(src="", alt="", upload-image-preview, class="image-preview")
+            //-  span(class="close-img-button" close-img-button) ✕
             input(type="file", class="form-control-file", id="thumbnail", name="thumbnail", accept="image/*", enctype="multipart/form-data", upload-image-input)
-            img(src="", alt="", upload-image-preview, class="image-preview")
 
 
 

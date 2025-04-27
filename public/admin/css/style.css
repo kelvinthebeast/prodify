@@ -365,4 +365,54 @@ header {
   background-position: center;
 }
 
+
+
+.form-group[upload-image] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  width: 320px;
+  margin: 20px auto;
+  background-color: #fafafa;
+}
+
+.image-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  background-image: url('https://via.placeholder.com/250x250?text=No+Image');
+  background-size: cover;
+  background-position: center;
+}
+
+.close-img-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 /* End upload img preview */
