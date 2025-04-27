@@ -147,3 +147,21 @@ if (showAlert) {
   }, parseInt(time));
 }
 // End show showAlert
+// upload img preview
+
+
+const uploadImage = document.querySelector('[upload-image]')
+if (uploadImage) {
+  const uploadImageInput = uploadImage.querySelector('[upload-image-input]')
+  const uploadImagePreview = uploadImage.querySelector('[upload-image-preview]')
+  uploadImageInput.addEventListener("change", (event) => {
+    const file = event.target.files[0]
+    
+    
+    if (file) {
+      uploadImagePreview.src = URL.createObjectURL(file);
+    }
+  })
+  
+} 
+// End upload img preview

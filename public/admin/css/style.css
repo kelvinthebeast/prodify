@@ -327,3 +327,42 @@ header {
 }
 
 /* End crete form for product */
+/* Upload img preview */
+[upload-image] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 15px;
+  border: 2px dashed #bbb;
+  border-radius: 8px;
+  width: 320px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+}
+
+[upload-image] label {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+[upload-image-input] {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.image-preview {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  background-image: url('https://via.placeholder.com/250x250?text=No+Image');
+  background-size: cover;
+  background-position: center;
+}
+
+/* End upload img preview */
