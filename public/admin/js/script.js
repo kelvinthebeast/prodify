@@ -178,11 +178,6 @@ if (uploadImage) {
 
 // const closeImgButton = uploadImage.querySelector("[close-img-button]")
 // closeImgButton.addEventListener("click", (event) => {
-//   if (currentObjectURL) {
-//     URL.revokeObjectURL(currentObjectURL);
-//     currentObjectURL = null; // Set lại null sau khi revoke
-//   }
-
 //   uploadImagePreview.src = "";
 //   uploadImagePreview.style.backgroundImage = 'url("https://via.placeholder.com/250x250?text=No+Image")';
 // })
