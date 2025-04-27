@@ -82,7 +82,10 @@ block main
                     href="javascript:;" class="badge badge-warning text-dark button-change-status"
                     ) Inactive
               td 
-                button(class="btn btn-warning btn-sm text-dark") Edit
+                a(
+                  href=`/admin/products/edit/${item.id}`
+                  class="btn btn-warning btn-sm text-dark"
+                  ) Edit
                 button(
                   class="btn btn-danger btn-sm ms-2"
                   button-delete 

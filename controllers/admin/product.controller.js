@@ -2,6 +2,7 @@ const Product = require("../../models/product.model");
 const filterStatusHelper = require("../../helpers/filterStatus")
 const searchHelper = require("../../helpers/search")
 const systemConfig = require("../../config/system")
+
 /**
  * [GET] /admin/products
  * @description Render the product management page
@@ -148,6 +149,7 @@ module.exports.getCreateProductPage = (req, res) => {
 module.exports.postCreateProductPage = async (req, res) => {
 
   
+  
   req.body.price = parseInt(req.body.price) || 0
   req.body.discountPercentage = parseInt(req.body.discountPercentage) || 0
 
@@ -160,7 +162,9 @@ module.exports.postCreateProductPage = async (req, res) => {
   } else {
     req.body.position = parseInt(req.body.position)
   }
-
+  if (req.file) {
+    req.body.thumbnail = `/uploads/${req.file.filename}`
+  }
   
   const newProduct = new Product(req.body);
   await newProduct.save()
@@ -168,4 +172,43 @@ module.exports.postCreateProductPage = async (req, res) => {
   res.redirect(`${systemConfig.prefixAdmin}/products`)
   
  
+}
+
+module.exports.updateProduct = async (req, res) => {
+  const id = req.params.id
+  const product = await Product.findOne({
+    deleted: false,
+    _id: id
+  })
+
+  res.render("admin/pages/products/edit", {
+    product: product
+  })
+}
+
+module.exports.patchUpdateProduct = async (req, res) => {
+  req.body.price = parseInt(req.body.price) || 0
+  req.body.discountPercentage = parseInt(req.body.discountPercentage) || 0
+
+  req.body.stock = parseInt(req.body.stock) || 0
+
+ 
+  req.body.position = parseInt(req.body.position)
+  
+  if (req.file) {
+    req.body.thumbnail = `/uploads/${req.file.filename}`;
+  } 
+  try {
+    await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+    req.flash('success',"Update product successfully!")
+    res.redirect(req.headers.referer);
+  } catch (error) {
+    req.flash("error","Update failed")
+    res.redirect(`${systemConfig.prefixAdmin}/products`)
+    
+  }
+  
+  
+  
 }
