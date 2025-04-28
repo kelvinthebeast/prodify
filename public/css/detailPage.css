@@ -1,0 +1,111 @@
+/* Container chính */
+.container.mt-5 {
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* Card sản phẩm */
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Tăng độ đậm của shadow */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng hover cho card */
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Card nổi lên khi hover */
+}
+
+/* Phần hình ảnh sản phẩm */
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho hình ảnh */
+img:hover {
+  transform: scale(1.05); /* Hình ảnh phóng to khi hover */
+}
+
+/* Nội dung card */
+.card-body {
+  padding: 20px;
+}
+
+/* Tiêu đề sản phẩm */
+h1.mb-4 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff; /* Màu xanh dương cho tiêu đề */
+}
+
+/* Thông tin sản phẩm */
+.row.mb-3 p.mb-2 {
+  margin-bottom: 0;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+/* Giá sản phẩm */
+h5.text-dark {
+  font-size: 1.25rem;
+  color: #343a40;
+  font-weight: bold;
+}
+
+/* Giá cũ (nếu có) */
+h5.text-muted.text-decoration-line-through {
+  text-decoration: line-through;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+/* Giảm giá */
+h5.text-danger {
+  font-size: 1.25rem;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Mô tả sản phẩm */
+div {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Nút quay lại */
+.btn-warning {
+  background-color: #f39c12;
+  border: none;
+  font-size: 1.125rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22;
+}
+
+/* Responsive cho các màn hình nhỏ */
+@media (max-width: 768px) {
+  .row.g-4 {
+    gap: 1.5rem; /* Tăng khoảng cách giữa các cột */
+  }
+
+  .col-md-4, .col-md-8 {
+    flex: 1 1 100%; /* Cột trở thành dạng dọc trên các màn hình nhỏ */
+  }
+
+  h1.mb-4 {
+    font-size: 1.5rem; /* Giảm kích thước tiêu đề trên màn hình nhỏ */
+  }
+}

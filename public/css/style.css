@@ -124,3 +124,120 @@ body {
 }
 
 /* End product */
+/* remade product page */
+/* Container chính */
+.container.my-5 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* Card sản phẩm */
+.product-item {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Tăng độ đậm của shadow */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho card */
+.product-item:hover {
+  transform: translateY(-5px); /* Di chuyển lên khi hover */
+}
+
+/* Hình ảnh sản phẩm */
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Giữ tỉ lệ hình ảnh, không bị méo */
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho hình ảnh */
+.product-img:hover {
+  transform: scale(1.05);
+}
+
+/* Nội dung bên trong card */
+.inner-card {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Tiêu đề sản phẩm */
+.product-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.product-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-title a:hover {
+  color: #007bff;
+}
+
+/* Giá sản phẩm */
+.price-box {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.inner-price-new {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.inner-price-old {
+  font-size: 1rem;
+  text-decoration: line-through;
+  margin-left: 10px;
+  color: #6c757d;
+}
+
+/* Phần giảm giá */
+.discount {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 768px) {
+  .product-item {
+    margin-bottom: 20px;
+  }
+
+  .product-title {
+    font-size: 1rem;
+  }
+
+  .inner-price-new {
+    font-size: 1.125rem;
+  }
+
+  .inner-price-old {
+    font-size: 0.875rem;
+  }
+
+  .discount {
+    font-size: 0.875rem;
+  }
+}
+
+/* End remade product page */
+

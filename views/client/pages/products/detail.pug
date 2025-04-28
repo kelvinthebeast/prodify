@@ -32,14 +32,7 @@ block main
                 p.mb-2.text-muted Position:
                 h5.text-dark #{product.position}
 
-          .row.mb-3
-            if (product.status)
-              .col-12
-                p.mb-2.text-muted Status:
-                if (product.status === 'active')
-                  span.badge.bg-success.p-2 Active
-                else
-                  span.badge.bg-danger.p-2 Inactive
+          
 
           if (product.description)
             .row.mb-3
@@ -48,6 +41,6 @@ block main
                 div(style="background: #f8f9fa; padding: 15px; border-radius: 8px;") !{product.description}
 
       .text-center.mt-4
-        a(href=`${prefixAdmin}/products/edit/${product.id}`, class="btn btn-warning btn-lg px-5") EDIT
+        a(href=`/products`, class="btn btn-warning btn-lg px-5") back
 
   script(src="/admin/js/product.js")

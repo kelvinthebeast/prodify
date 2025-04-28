@@ -17,7 +17,7 @@ module.exports.getDetailPage = async (req, res) => {
     const product = await Product.findOne({
       deleted: false,
       status: "active",
-      // slug: slug
+      slug: slug
     })
 
     res.render("client/pages/products/detail", {
