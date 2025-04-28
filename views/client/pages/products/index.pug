@@ -18,7 +18,8 @@ block main
           .product-item.shadow-sm.p-3.border.rounded
             img.product-img(src=item.thumbnail, alt=item.title)
             .inner-content.mt-3
-              h3.product-title #{item.title}
+              h3.product-title 
+                a(href=`/products/${item.slug}`) #{item.title}
               .price-box
                 span.inner-price-new.text-danger.me-2 #{item.priceNew}$
                 span.inner-price-old.text-muted.text-decoration-line-through #{item.price}$

@@ -10,3 +10,22 @@ module.exports.index = async (req, res) => {
      products: newProducts
     });
 }
+
+module.exports.getDetailPage = async (req, res) => {
+  try {
+    const slug = req.params.slug;
+    const product = await Product.findOne({
+      deleted: false,
+      status: "active",
+      // slug: slug
+    })
+
+    res.render("client/pages/products/detail", {
+      pageTitle: product.title,
+      product: product
+    })
+  } catch (error) {
+    req.flash("error", "Cannot updated~")
+    res.redirect("/products")
+  }
+}

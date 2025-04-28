@@ -9,7 +9,7 @@ block main
        
      
     form(
-        action=`${prefixAdmin}/products/create`
+        action=${prefixAdmin}/products/create
         id="form-create-product"
         method="POST"
         enctype="multipart/form-data"
@@ -98,5 +98,3 @@ block main
                 type="submit"
                 class="btn btn-primary"
             ) Add new product
-
-    script(src="/admin/js/product.js")

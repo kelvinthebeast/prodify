@@ -1,5 +1,5 @@
 module.exports.postCreateProductPageValidate = (req, res, next) => {
-  if (!req.title) {
+  if (!req.body.title) {
     req.flash("error", "Please enter title!")
     res.redirect(req.headers.referer);
     return;

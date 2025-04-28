@@ -138,6 +138,7 @@ module.exports.deleteOneProduct = async (req, res) => {
 
 module.exports.getCreateProductPage = (req, res) => {
   res.render("admin/pages/products/create")
+
 }
 /**
  * @description handle when post data from form to server
@@ -170,7 +171,7 @@ module.exports.postCreateProductPage = async (req, res) => {
   await newProduct.save()
   req.flash("success", "Add product successfully!")
   res.redirect(`${systemConfig.prefixAdmin}/products`)
-  
+  // console.log(req.body)
  
 }
 
@@ -187,6 +188,10 @@ module.exports.updateProduct = async (req, res) => {
 }
 
 module.exports.patchUpdateProduct = async (req, res) => {
+  if (!req.body.title || req.body.title.trim() === '') {
+    req.flash("error", "Please provide a title!");
+    return res.redirect(`${systemConfig.prefixAdmin}/products/create`);
+}
   req.body.price = parseInt(req.body.price) || 0
   req.body.discountPercentage = parseInt(req.body.discountPercentage) || 0
 
