@@ -6,109 +6,101 @@ include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
 
 block main
-  
-          
-  // Alert message
-  +alert-success(5500) 
-      
-  h1 Product List Page
+  +alert-success(5500)
 
-  // Product List Table
-  
-  .card.mb-3 
-  .card-header Filter and Find
+  h1.mb-4.text-primary Product List Page
 
-  .card-body 
-    .row.g-2
-      // Các nút lọc
-      .col-md-6
-        .d-flex.flex-wrap.gap-2
-          +filter-status(filterStatus)
-      // Ô tìm kiếm
-      .col-md-6
+  // Filter & Search Section
+  .card.mb-4
+    .card-header.d-flex.justify-content-between.align-items-center
+      span Filter and Find
+      a.btn.btn-success.btn-sm(href=`${prefixAdmin}/products/create`) + Add New
+
+    .card-body
+      .row.g-3
+        .col-md-6
+          .d-flex.flex-wrap.gap-2
+            +filter-status(filterStatus)
+        .col-md-6
           +search(keyword)
-      .col-md-6 
-         a(
-            href=`${prefixAdmin}/products/create`
-            class="btn btn-outline-success"
-                ) + Add new
-        
-  .card.mb-3 
-    .card-header List
+
+  // Product List Section
+  .card
+    .card-header.d-flex.justify-content-between.align-items-center
+      span Product List
+      small.text-muted Total: #{pagination.totalItems} products
+
     .card-body
       +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
-      table(
-        class="table table-hover table-sm"
-        checkbox-multi
-      )
-       
+
+      table.table.table-striped.table-hover.align-middle.text-center
         thead
           tr
-            th 
-                input(type="checkbox", name="checkall")
+            th
+              input(type="checkbox", name="checkall")
             th No.
             th Image
             th Product's Name
             th Price
             th Position
             th Status
-            th Action
+            th Actions
         tbody
           each item, index in products
-            
             tr
-              td 
-                input(type="checkbox", name="id", value = item.id)
+              td
+                input(type="checkbox", name="id", value=item.id)
               td #{index + 1}
               td
-                img(src=item.thumbnail || '/path/to/default-image.jpg', width="100px" height="auto" alt="Thumbnail")
-              td #{item.title}
-              td #{item.price}$
+                img(src=item.thumbnail || '/images/default-thumbnail.jpg', alt="Thumbnail", style="width:80px; height:auto; border-radius:6px;")
+              td.text-start #{item.title}
+              td #{item.price} $
               td
-                input(type="number", width="60px", name="position", value=item.position, class="form-control form-control-sm")
+                input.form-control.form-control-sm.text-center(
+                  type="number",
+                  name="position",
+                  value=item.position,
+                  style="width:80px; display:inline-block;"
+                )
               td
-                if (item.status === "active")
-                  a(
+                if item.status == 'active'
+                  a.badge.bg-success.text-decoration-none(
+                    href="javascript:;"
+                    data-id=item.id
                     data-status=item.status
-                    data-id = item.id
                     button-change-status
-                    href=`javascript:;` class="badge badge-success button-change-status"
-                    ) Active
+                  ) Active
                 else
-                  a(
+                  a.badge.bg-warning.text-dark.text-decoration-none(
+                    href="javascript:;"
+                    data-id=item.id
                     data-status=item.status
-                    data-id = item.id
                     button-change-status
-                    href="javascript:;" class="badge badge-warning text-dark button-change-status"
-                    ) Inactive
-              td 
-                a(
-                  href=`/admin/products/edit/${item.id}`
-                  class="btn btn-warning btn-sm text-dark"
-                  ) Edit
-                button(
-                  class="btn btn-danger btn-sm ms-2"
-                  button-delete 
-                  data-id = item.id
-                  ) Delete
-  +pagination(pagination)
+                  ) Inactive
+              td
+                a.btn.btn-info.btn-sm.text-white.me-1(href=`/admin/products/detail/${item.id}`) Detail
+                a.btn.btn-warning.btn-sm.text-white.me-1(href=`/admin/products/edit/${item.id}`) Edit
+                button.btn.btn-danger.btn-sm(
+                  type="button",
+                  button-delete,
+                  data-id=item.id
+                ) Delete
+
+      // Pagination
+      +pagination(pagination)
+
+  // Hidden forms
   form(
-   
-    action=""
-    method="post"
+    id="form-change-status",
+    method="POST",
     data-path=`${prefixAdmin}/products/change-status`
-    
-    id="form-change-status"
-    )
+  )
   form(
-   
-    action=""
-    method="post"
+    id="form-delete-product",
+    method="POST",
     data-path=`${prefixAdmin}/products/delete`
-    
-    id="form-delete-product"
-    )
+  )
 
-
-  script(src="/admin/js/product.js") 
-  script(src="/admin/js/script.js") 
+  // Scripts
+  script(src="/admin/js/product.js")
+  script(src="/admin/js/script.js")

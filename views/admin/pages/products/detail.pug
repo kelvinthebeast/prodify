@@ -1,0 +1,53 @@
+extends ../../layouts/default.pug
+
+block main
+  .container.mt-5
+    if (product.title)
+      h1.mb-4.text-center.text-primary #{product.title}
+
+    .card.shadow.p-4
+      .row.g-4
+        if (product.thumbnail)
+          .col-md-4.d-flex.justify-content-center.align-items-center
+            img(src=product.thumbnail, alt="Product Thumbnail", style="max-width: 100%; border-radius: 10px;")
+
+        .col-md-8
+          .row.mb-3
+            if (product.price)
+              .col-6
+                p.mb-2.text-muted Price:
+                h5.text-dark #{product.price}$
+            if (product.discountPercentage)
+              .col-6
+                p.mb-2.text-muted Discount:
+                h5.text-danger #{product.discountPercentage}%
+
+          .row.mb-3
+            if (product.stock)
+              .col-6
+                p.mb-2.text-muted Stock:
+                h5.text-dark #{product.stock}
+            if (product.position)
+              .col-6
+                p.mb-2.text-muted Position:
+                h5.text-dark #{product.position}
+
+          .row.mb-3
+            if (product.status)
+              .col-12
+                p.mb-2.text-muted Status:
+                if (product.status === 'active')
+                  span.badge.bg-success.p-2 Active
+                else
+                  span.badge.bg-danger.p-2 Inactive
+
+          if (product.description)
+            .row.mb-3
+              .col-12
+                p.mb-2.text-muted Description:
+                div(style="background: #f8f9fa; padding: 15px; border-radius: 8px;") !{product.description}
+
+      .text-center.mt-4
+        a(href=`${prefixAdmin}/products/edit/${product.id}`, class="btn btn-warning btn-lg px-5") EDIT
+
+  script(src="/admin/js/product.js")

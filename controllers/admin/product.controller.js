@@ -203,12 +203,26 @@ module.exports.patchUpdateProduct = async (req, res) => {
 
     req.flash('success',"Update product successfully!")
     res.redirect(req.headers.referer);
+    
   } catch (error) {
     req.flash("error","Update failed")
     res.redirect(`${systemConfig.prefixAdmin}/products`)
+    
     
   }
   
   
   
+}
+
+module.exports.getDetailPage = async (req, res) => {
+  const id = req.params.id;
+  const product = await Product.findOne({
+    deleted: false,
+    _id: id
+  })
+  res.render("admin/pages/products/detail",{
+    pageTitle: product.title,
+    product: product
+  })
 }

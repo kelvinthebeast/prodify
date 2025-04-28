@@ -30,4 +30,6 @@ router.patch("/edit/:id",
 
 
 
+router.get("/detail/:id", productController.getDetailPage)
+
 module.exports = router;
