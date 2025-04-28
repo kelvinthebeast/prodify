@@ -9,7 +9,7 @@ const port = 6868;
 const route = require("./routes/client/index.route");
 const adminRoute = require("./routes/admin/index.route");
 require("dotenv").config();
-app.use(express.static("public"));
+app.use(express.static(`${__dirname}/public`));
 const mongoose = require("mongoose");
 const database = require("./config/database");
 console.log(process.env.PORT); // → 6868
@@ -41,8 +41,10 @@ app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
 
 
-app.set("views","./views");
+app.set("views",`${__dirname}/views`);
 app.set("view engine", "pug");
+
+
 
 
 
