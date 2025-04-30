@@ -16,8 +16,16 @@ console.log(process.env.PORT); // → 6868
 
 // Multer upload photo
 const multer  = require('multer')
+const cloudinary = require("cloudinary")
 const upload = multer({ dest: '.public/uploads/' })
 
+// setup cloudinary
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.CLOUD_KEY, 
+  api_secret: process.env.CLOUD_SECRET // Click 'View API Keys' above to copy your API secret
+});
+// End cloudinary
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));

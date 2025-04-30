@@ -3,8 +3,11 @@ const router = express.Router();
 const multer  = require('multer')
 const multerStorage = require("../../helpers/multerStorage")
 const upload = multer({ storage: multerStorage()})
+
 const productController = require("../../controllers/admin/product.controller")
 const productValidate = require("../../validates/admin/product.validate")
+
+// const adminMiddleware = require("../../middlewares/admin/uploadCloudinary.middleware")
 router.get("/", productController.index);
 router.patch("/change-status/:status/:id", productController.changeStatus);
 router.patch("/change-multi", productController.changeMultiStatus);
@@ -16,6 +19,7 @@ router.get("/create", productController.getCreateProductPage)
 
 router.post("/create", 
   upload.single("thumbnail"),
+  // adminMiddleware.upload,
   productValidate.postCreateProductPageValidate,
   productController.postCreateProductPage)
 
