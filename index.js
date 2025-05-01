@@ -18,7 +18,11 @@ console.log(process.env.PORT); // → 6868
 const multer  = require('multer')
 const upload = multer({ dest: '.public/uploads/' })
 
+const path = require('path');
 
+//TINY MCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+//END TINYMCE
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
