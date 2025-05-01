@@ -37,11 +37,23 @@ module.exports.index = async (req, res) => {
   const countProduct = await Product.countDocuments(find);
   const totalPage = Math.ceil(countProduct / objectPagination.limitItems);
   objectPagination.totalPage = totalPage;
+
+  // sort
+  let sort = {}
+  if (req.query.sortKey && req.query.sortValue) {
+      sort[req.query.sortKey] = req.query.sortValue;
+
+
+  } else {
+    // default
+      sort.position = "desc";
+  }
+  // End sort
   // ENd pagination
   const products = await Product.find(find)
                                 .limit(objectPagination.limitItems)
                                 .skip(objectPagination.skipItems)
-                                .sort({ position: "desc" });
+                                .sort(sort);
   res.render("admin/pages/products/index", {
     pageTitle: "Product",
     products: products,

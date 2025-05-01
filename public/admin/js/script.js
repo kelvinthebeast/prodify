@@ -182,3 +182,44 @@ if (uploadImage) {
 //   uploadImagePreview.style.backgroundImage = 'url("https://via.placeholder.com/250x250?text=No+Image")';
 // })
 // close img preview
+
+// sort
+const sort = document.querySelector("[sort]");
+ if (sort) {
+ 
+     let url = new URL(window.location.href);
+     const sortSelect = sort.querySelector("[sort-select]");
+     const sortClear = sort.querySelector("[sort-clear]");
+     // sắp xếp
+     sortSelect.addEventListener("change", (e) => {
+         const value = e.target.value;
+         const [sortKey, sortValue] = value.split("-");
+         url.searchParams.set("sortKey", sortKey);
+         url.searchParams.set("sortValue", sortValue);
+ 
+         window.location.href = url.href;
+     })
+     // clear event
+     sortClear.addEventListener("click", () => {
+         url.searchParams.delete("sortKey");
+         url.searchParams.delete("sortValue");
+         window.location.href = url.href; // Missing line to trigger the page reload after clearing parameters
+     })
+     // add selected for option
+     const sortKey = url.searchParams.get("sortKey");
+     const sortValue = url.searchParams.get("sortValue");
+ 
+     
+     if (sortKey && sortValue) {
+         const stringSort = `${sortKey}-${sortValue}`;
+         
+ 
+         const optionSelected = sortSelect.querySelector(`option[value=${stringSort}]`);
+         
+         
+         if (optionSelected) {
+             optionSelected.setAttribute("selected", "selected"); // Set the 'selected' attribute
+         }
+     }
+ }
+// End sort
