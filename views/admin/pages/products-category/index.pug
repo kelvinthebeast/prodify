@@ -1,6 +1,11 @@
 extends ../../layouts/default.pug
 include ../../mixins/table-tree.pug
+include ../../mixins/alert.pug
+
 block main
+
+  +alert-success(5500) 
+  
   h1 Product category
   .card.mb-3
     .card-header List item
@@ -12,8 +17,8 @@ block main
       table.table.table-striped.table-bordered(checkbox-multi)
         thead.table-dark
           tr
-            th
-              input(type="checkbox", name="checkall")
+            //- th
+            //-   input(type="checkbox", name="checkall")
             th STT
             th Image
             th Title
@@ -22,3 +27,13 @@ block main
             th Actions
         tbody
           +table-tree(records)
+  form(
+   
+    action=""
+    method="post"
+    data-path=`${prefixAdmin}/products-category/delete`
+    
+    id="form-delete-category"
+    )
+  script(src="/admin/js/product-category.js") 
+  script(src="/admin/js/script.js") 

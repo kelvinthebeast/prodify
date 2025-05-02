@@ -20,4 +20,18 @@ router.post(
     productCategoryController.createPost
 );
 
+
+router.get(`/detail/:id`, productCategoryController.getDetailCategory)
+
+
+router.get(`/edit/:id`, productCategoryController.getEditCategoryPage)
+
+router.patch('/edit/:id',
+    upload.single("thumbnail"),
+    productCategoryController.updateCategory)
+
+
+
+// delete category
+router.patch("/delete/:id", productCategoryController.deleteCategory)
 module.exports = router;

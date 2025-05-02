@@ -1,0 +1,34 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+//- include ../../mixins/select-tree.pug
+
+block main
+  +alert-success(5000)
+  .container.mt-4
+    h2 Edit Category
+    form(method="POST", action=`${prefixAdmin}/products-category/edit/${category.id}?_method=PATCH`, enctype="multipart/form-data")
+      .card
+        .card-body
+          .mb-3
+            label.form-label(for="title") Title
+            input.form-control(type="text", name="title", id="title", value=category.title, required)
+
+          .mb-3
+            label.form-label(for="thumbnail") Thumbnail
+            if category.thumbnail
+              img(src=category.thumbnail, alt="Current Thumbnail", width="100", height="100", class="d-block mb-2")
+            input.form-control(type="file", name="thumbnail", id="thumbnail", accept="image/*")
+
+          .mb-3
+            label.form-label(for="position") Position
+            input.form-control(type="number", name="position", id="position", min="1", value=category.position || 1)
+
+          .mb-3
+            label.form-label(for="status") Status
+            select.form-select(name="status", id="status")
+              option(value="active", selected=category.status === 'active') Active
+              option(value="inactive", selected=category.status === 'inactive') Inactive
+
+        .card-footer.mt-4
+          button.btn.btn-primary(type="submit") Save Changes
+          a.btn.btn-secondary.ml-2(href=`${prefixAdmin}/products-category`) Cancel
