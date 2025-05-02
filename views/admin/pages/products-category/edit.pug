@@ -15,9 +15,11 @@ block main
 
           .mb-3
             label.form-label(for="thumbnail") Thumbnail
+            input.form-control(type="file", name="thumbnail", id="thumbnail", accept="image/*", upload-image-input)
             if category.thumbnail
-              img(src=category.thumbnail, alt="Current Thumbnail", width="100", height="100", class="d-block mb-2")
-            input.form-control(type="file", name="thumbnail", id="thumbnail", accept="image/*")
+              img(src=category.thumbnail, alt="Current Thumbnail", width="100", height="100", class="d-block mb-2", upload-image-preview)
+            else
+              img(src="", alt="Preview", width="100", height="100", class="d-block mb-2", style="display:none", upload-image-preview)
 
           .mb-3
             label.form-label(for="position") Position
@@ -32,3 +34,5 @@ block main
         .card-footer.mt-4
           button.btn.btn-primary(type="submit") Save Changes
           a.btn.btn-secondary.ml-2(href=`${prefixAdmin}/products-category`) Cancel
+
+  script(src="/admin/js/product-category.js")
