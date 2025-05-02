@@ -88,9 +88,13 @@ module.exports.getEditCategoryPage = async (req, res) => {
         deleted: false,
         _id: id
     })
+    const records = await ProductCategory.find({deleted: false})
+    const newRecords = createTreeHelper.tree(records);
+    
     res.render(`admin/pages/products-category/edit`,{
         pageTitle: needEditCategory.title,
-        category: needEditCategory
+        category: needEditCategory,
+        records: newRecords
     })
 }
 
