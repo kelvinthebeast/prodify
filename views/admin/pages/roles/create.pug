@@ -1,27 +1,24 @@
 extends ../../layouts/default.pug
- 
- block main
-   h1(class="mb-4") Add new role
-   form(action=`${prefixAdmin}/roles/create`, method="POST") 
-     div(class="form-group")
-       label(for="title") Tittle 
-       input(
-         type="text" 
-         class="form-control" 
-         id="title" 
-         name="title" 
-         required
-       )
-     div(class="form-group")
-       label(for="desc") Desc
-       input(
-         type="text" 
-         class="form-control" 
-         id="desc" 
-         name="description"
-       )
-     div(class="form-group")
-       button(
-         type="submit"
-         class="btn btn-primary"
-       ) Tạo mới
+
+block main
+  h1.mb-4 Add new role
+
+  form(action=`${prefixAdmin}/roles/create`, method="POST") 
+    .form-group
+      label(for="title") Title
+      input#title.form-control(
+        type="text", 
+        name="title", 
+        required
+      )
+      
+    .form-group
+      label(for="description") Description
+      input#description.form-control(
+        type="text", 
+        name="description"
+      )
+
+    .form-group
+      button.btn.btn-primary(type="submit") Create
+  link(rel="stylesheet", href="/css/role.css")

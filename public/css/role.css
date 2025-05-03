@@ -1,0 +1,91 @@
+/* role.css */
+
+body {
+  background-color: #f8f9fa; /* Màu nền nhẹ */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1.mb-4 {
+  color: #343a40;
+  font-weight: 600;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+/* role.css – cho cả danh sách và form */
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  background-color: #f1f3f5;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.btn + .btn {
+  margin-left: 6px;
+}
+
+.btn-outline-success {
+  font-weight: 500;
+}
+
+.text-muted {
+  font-style: italic;
+}

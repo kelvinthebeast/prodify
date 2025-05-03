@@ -4,18 +4,18 @@ const Role = require("../../models/role.model");
  const systemConfig = require("../../config/system");
  module.exports.index = async (req, res) => {
  
-    //  let find = {
-    //      deleted: false
-    //  }
+     let find = {
+         deleted: false
+     }
  
-    //  const records = await Role.find(find);
-    //  res.render("admin/pages/roles/index", {
+     const records = await Role.find(find);
+     res.render("admin/pages/roles/index", {
  
-    //      pageTitle: "Danh mục quyền",
-    //      records: records
+         pageTitle: "Danh mục quyền",
+         records: records
  
-    //  });
-    res.send("OKE")
+     });
+    // res.send("OKE")
  }
  
  
