@@ -73,8 +73,35 @@ module.exports.updateEditPage = async (req, res) => {
         req.flash("success", "Update role(s) successfully")
         res.redirect("/admin/roles")
     } catch (error) {
-        res.redirect("/admin/roles")
         req.flash("error", 'Update failed')
+        res.redirect("/admin/roles")
+        
         
     }
+}
+
+
+/**
+ * delete roles
+ * [PATCH] /admin/roles/delete/:id
+ * 
+ */
+
+module.exports.deleteRole = async (req, res) => {
+    const id = req.params.id
+    try {
+        await Role.updateOne(
+            {
+                _id: id
+            }, { deleted: true, deletedAt: new Date() }
+        )
+        req.flash("success", "Delete role(s) successfully")
+        res.redirect("/admin/roles")
+    } catch (error) {
+        req.flash("error", 'Delete failed')
+        res.redirect("/admin/roles")
+        
+        
+    }
+
 }

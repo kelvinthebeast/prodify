@@ -128,7 +128,8 @@ module.exports.deleteCategory = async (req, res) => {
         await ProductCategory.updateOne({
             _id: id
         }, {
-            deleted: false
+            deleted: false,
+            deletedAt: new Date()
         })
 
         req.flash("success", "Deleted category successful")
