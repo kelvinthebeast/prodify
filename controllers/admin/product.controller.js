@@ -2,7 +2,8 @@ const Product = require("../../models/product.model");
 const filterStatusHelper = require("../../helpers/filterStatus")
 const searchHelper = require("../../helpers/search")
 const systemConfig = require("../../config/system")
-
+const ProductCategory = require("../../models/product-category.model");
+const createTreeHelper = require("../../helpers/createTree");
 /**
  * [GET] /admin/products
  * @description Render the product management page
@@ -148,8 +149,16 @@ module.exports.deleteOneProduct = async (req, res) => {
  * @param {*} res 
  */
 
-module.exports.getCreateProductPage = (req, res) => {
-  res.render("admin/pages/products/create")
+module.exports.getCreateProductPage =  async (req, res) => {
+  let find = {
+    deleted: false
+  }
+
+  const category = await ProductCategory.find(find)
+  const newCategory = createTreeHelper.tree(category)
+  res.render("admin/pages/products/create", {
+    category: newCategory
+  })
 
 }
 /**
@@ -157,6 +166,7 @@ module.exports.getCreateProductPage = (req, res) => {
  * add new product using `new Product(req.body)`
  * @param {*} req 
  * @param {*} res 
+ * [post] /admin/products/create
  */
 
 module.exports.postCreateProductPage = async (req, res) => {
@@ -179,6 +189,7 @@ module.exports.postCreateProductPage = async (req, res) => {
     req.body.thumbnail = `/uploads/${req.file.filename}`
   }
   
+
   const newProduct = new Product(req.body);
   await newProduct.save()
   req.flash("success", "Add product successfully!")
@@ -186,17 +197,22 @@ module.exports.postCreateProductPage = async (req, res) => {
   // console.log(req.body)
  
 }
-
+// [GET] /admin/products/edit/:id
 module.exports.updateProduct = async (req, res) => {
   const id = req.params.id
   const product = await Product.findOne({
     deleted: false,
     _id: id
   })
-
+  const categories = await ProductCategory.find({  deleted: false })
+  
+  const newCategories = createTreeHelper.tree(categories)
+  
   res.render("admin/pages/products/edit", {
-    product: product
+    product: product,
+    category: newCategories
   })
+  // res.send("OKEE")
 }
 
 module.exports.patchUpdateProduct = async (req, res) => {
@@ -231,13 +247,20 @@ module.exports.patchUpdateProduct = async (req, res) => {
   
   
 }
-
+/**
+ * [Get] /admin/products/detail/:id
+ * @param {*} req 
+ * @param {*} res 
+ */
 module.exports.getDetailPage = async (req, res) => {
   const id = req.params.id;
+  console.log(id, "id")
   const product = await Product.findOne({
     deleted: false,
     _id: id
   })
+  
+  
   res.render("admin/pages/products/detail",{
     pageTitle: product.title,
     product: product

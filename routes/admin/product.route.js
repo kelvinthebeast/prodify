@@ -20,7 +20,7 @@ router.post("/create",
   productController.postCreateProductPage)
 
 
-
+// get [edit page]
 router.get("/edit/:id", productController.updateProduct)
 
 router.patch("/edit/:id", 
