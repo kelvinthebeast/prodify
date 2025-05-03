@@ -212,7 +212,7 @@ module.exports.updateProduct = async (req, res) => {
     product: product,
     category: newCategories
   })
-  // res.send("OKEE")
+  
 }
 
 module.exports.patchUpdateProduct = async (req, res) => {
