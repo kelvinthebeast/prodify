@@ -10,4 +10,8 @@ router.get("/create", roleController.create);
 
 router.post("/create", roleController.createPost);
 
+router.get("/edit/:id", roleController.getEditPage)
+
+router.patch("/edit/:id", roleController.updateEditPage)
+
 module.exports = router;
