@@ -105,3 +105,34 @@ module.exports.deleteRole = async (req, res) => {
     }
 
 }
+
+/**
+ * @requires
+ * 
+ * GEt permission
+ * /admin/roles/permissions
+ */
+
+module.exports.getPermissions = async (req, res) => {
+    let find = {deleted: false}
+    
+    const records = await Role.find(find);
+    res.render("admin/pages/roles/permissions", {
+        pageTitle: "Mục phân quyền",
+        records: records
+        
+    })
+}
+
+
+module.exports.permissionsPatch = async (req, res) => {
+    
+    const permissions = JSON.parse(req.body.permissions);
+    for (const item of permissions) {
+        
+        await Role.updateOne({ _id: item.id }, { permissions: item.permission });
+        
+    }
+    res.redirect(req.headers.referer)
+
+}
