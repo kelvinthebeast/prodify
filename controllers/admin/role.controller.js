@@ -126,13 +126,22 @@ module.exports.getPermissions = async (req, res) => {
 
 
 module.exports.permissionsPatch = async (req, res) => {
-    
-    const permissions = JSON.parse(req.body.permissions);
-    for (const item of permissions) {
+    try {
+        const permissions = JSON.parse(req.body.permissions);
+        for (const item of permissions) {
         
-        await Role.updateOne({ _id: item.id }, { permissions: item.permission });
+        await Role.updateOne({ _id: item.id }, { permissions: item.permissions });
         
     }
-    res.redirect(req.headers.referer)
+    req.flash("success", "Update successfully")
 
+    res.redirect('/admin/roles/permissions')
+
+    } catch (error) {
+        console.log(error)
+        req.flash("error", 'Update failed')
+        res.redirect("/admin/roles")
+        
+    }
+    
 }

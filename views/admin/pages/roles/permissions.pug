@@ -1,8 +1,12 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
  
 block main
+    +alert-success(5500) 
+    +alert-error(5000)
     h1(class="mb-4") Phân quyền
     if(records)
+        div(data-records=records)
         div(class="text-right")
             button(
                 type="submit"
@@ -30,25 +34,25 @@ block main
                     td Xem
                     each item in records
                         td(class="text-center")
-                            input(type="checkbox")
+                            input(type="checkbox" data-id=item.id)
                     
-                tr(data-name="products-category_create")
+                tr(data-name="products-category_create" )
                     td Thêm mới
                     each item in records
                         td(class="text-center")
-                            input(type="checkbox")
+                            input(type="checkbox" data-id=item.id)
                     
                 tr(data-name="products-category_edit")
                     td Chỉnh sửa
                     each item in records
                         td(class="text-center")
-                            input(type="checkbox")
+                            input(type="checkbox" data-id=item.id)
                     
                 tr(data-name="products-category_delete")
                     td Xóa
                     each item in records
                         td(class="text-center")
-                            input(type="checkbox")
+                            input(type="checkbox" data-id=item.id)
 
     form( 
         id="form-change-permissions" 
