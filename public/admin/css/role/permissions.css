@@ -1,0 +1,102 @@
+/* Layout toàn trang */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Tiêu đề trang */
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #004085;
+  margin-bottom: 1.5rem;
+}
+
+/* Nút cập nhật */
+button[button-submit] {
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 6px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+button[button-submit]:hover {
+  background-color: #0056b3;
+}
+
+/* Table chung */
+table[table-permissions] {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table[table-permissions] thead th {
+  background-color: #e9ecef;
+  color: #495057;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+table[table-permissions] tbody td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #f1f1f1;
+  vertical-align: middle;
+}
+
+/* Header dòng nhóm */
+table[table-permissions] tbody tr > td[colspan="4"] {
+  background-color: #f8f9fa;
+  color: #212529;
+  font-weight: bold;
+  text-align: left;
+  padding: 14px 12px;
+  border-top: 2px solid #dee2e6;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+  accent-color: #007bff;
+}
+
+/* Input ID */
+input[type="text"]#id {
+  width: 80px;
+  padding: 4px 6px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Hiệu ứng hover dòng */
+table[table-permissions] tbody tr:hover {
+  background-color: #f1f7ff;
+}
+
+/* Responsive: khi màn hình nhỏ */
+@media (max-width: 768px) {
+  table[table-permissions] {
+      font-size: 0.85rem;
+  }
+
+  button[button-submit] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+  }
+
+  input[type="checkbox"] {
+      transform: scale(1.1);
+  }
+}

@@ -1,0 +1,24 @@
+extends ../../layouts/default.pug
+
+block main
+  h1.mb-4 Add new role
+
+  form(action=`${prefixAdmin}/roles/create`, method="POST") 
+    .form-group
+      label(for="title") Title
+      input#title.form-control(
+        type="text", 
+        name="title", 
+        required
+      )
+      
+    .form-group
+      label(for="description") Description
+      input#description.form-control(
+        type="text", 
+        name="description"
+      )
+
+    .form-group
+      button.btn.btn-primary(type="submit") Create
+  link(rel="stylesheet", href="/css/role.css")

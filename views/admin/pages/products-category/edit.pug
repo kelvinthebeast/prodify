@@ -1,0 +1,44 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/select-tree.pug
+
+block main
+  +alert-success(5000)
+  .container.mt-4
+    h2 Edit Category
+    form(method="POST", action=`${prefixAdmin}/products-category/edit/${category.id}?_method=PATCH`, enctype="multipart/form-data")
+      .card
+        .card-body
+          .mb-3
+            label.form-label(for="title") Title
+            input.form-control(type="text", name="title", id="title", value=category.title, required)
+          
+          div(class="form-group")
+            label(for="parent_id") Category
+            select(name="parent_id" id="parent_id" class="form-control")
+                option(value="") --select category for your product--
+                if (records)
+                    +select-tree(records, 1, category.parent_id)
+          .mb-3
+            label.form-label(for="thumbnail") Thumbnail
+            input.form-control(type="file", name="thumbnail", id="thumbnail", accept="image/*", upload-image-input)
+            if category.thumbnail
+              img(src=category.thumbnail, alt="Current Thumbnail", width="100", height="100", class="d-block mb-2", upload-image-preview)
+            else
+              img(src="", alt="Preview", width="100", height="100", class="d-block mb-2", style="display:none", upload-image-preview)
+
+          .mb-3
+            label.form-label(for="position") Position
+            input.form-control(type="number", name="position", id="position", min="1", value=category.position || 1)
+
+          .mb-3
+            label.form-label(for="status") Status
+            select.form-select(name="status", id="status")
+              option(value="active", selected=category.status === 'active') Active
+              option(value="inactive", selected=category.status === 'inactive') Inactive
+
+        .card-footer.mt-4
+          button.btn.btn-primary(type="submit") Save Changes
+          a.btn.btn-secondary.ml-2(href=`${prefixAdmin}/products-category`) Cancel
+
+  script(src="/admin/js/product-category.js")

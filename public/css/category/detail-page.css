@@ -1,0 +1,86 @@
+/* category-detail.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.dl.row dt {
+  font-weight: 600;
+  color: #495057;
+}
+
+.dl.row dd {
+  font-weight: 400;
+  color: #6c757d;
+  word-wrap: break-word;
+}
+
+.dl.row dd img {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.badge {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545;
+}
+
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: 0.3s;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.ml-2 {
+  margin-left: 10px;
+}
