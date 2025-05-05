@@ -3,9 +3,9 @@ include ../../mixins/alert.pug
 block main
     +alert-success(5000)
     +alert-error(5000)
-    h1(class="mb-4") Danh sách tài khoản
+    h1(class="mb-4") Account list
     .card.mb-3
-        .card-header Danh sách
+        .card-header List
         .card-body
             .row
                 .col-8
@@ -13,7 +13,7 @@ block main
                     a(
                         href=`${prefixAdmin}/accounts/create`
                         class="btn btn-outline-success"
-                    ) + Thêm mới
+                    ) + Add new
             table(class="table table-hover table-sm")
                 thead
                     tr
@@ -44,9 +44,9 @@ block main
                                         href="javascript:;"
                                         class="badge badge-success"
                                         data-status="active"
-                                    ) Hoạt động
+                                    ) Active
                                 else
-                                    a.badge.badge-danger( data-status="inactive" ) Dừng hoạt động
+                                    a.badge.badge-danger( data-status="inactive" ) Inactive
                             td
                                 a( class="btn btn-secondary btn-sm" href=`${prefixAdmin}/accounts/detail/${item.id}` ) Chi tiết
                                 a( class="btn btn-warning btn-sm ml-1" href=`${prefixAdmin}/accounts/edit/${item.id}` ) Sửa

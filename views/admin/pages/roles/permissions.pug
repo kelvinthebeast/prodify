@@ -4,7 +4,7 @@ include ../../mixins/alert.pug
 block main
     +alert-success(5500) 
     +alert-error(5000)
-    h1(class="mb-4") Phân quyền
+    h1(class="mb-4") Permission
     if(records)
         div(data-records=records)
         div(class="text-right")
@@ -12,12 +12,12 @@ block main
                 type="submit"
                 class="btn btn-primary mb-3"
                 button-submit
-            ) Cập nhật
+            ) Update
 
         table(class="table table-hover table-sm" table-permissions)
             thead
                 tr
-                    th Tính năng
+                    th Feature
                     each item in records
                         th(class="text-center") #{item.title}
             tbody
@@ -30,27 +30,27 @@ block main
                 // Product Category
                 tr
                     td(colspan="4")
-                        b Danh mục sản phẩm
+                        b Products category
                 tr(data-name="products-category_view")
-                    td Xem
+                    td Read
                     each item in records
                         td(class="text-center")
                             input(type="checkbox" data-id=item.id)
                     
                 tr(data-name="products-category_create" )
-                    td Thêm mới
+                    td Create
                     each item in records
                         td(class="text-center")
                             input(type="checkbox" data-id=item.id)
                     
                 tr(data-name="products-category_edit")
-                    td Chỉnh sửa
+                    td Update
                     each item in records
                         td(class="text-center")
                             input(type="checkbox" data-id=item.id)
                     
                 tr(data-name="products-category_delete")
-                    td Xóa
+                    td Delete
                     each item in records
                         td(class="text-center")
                             input(type="checkbox" data-id=item.id)
@@ -58,27 +58,27 @@ block main
             
                 tr
                     td(colspan="4")
-                        b sản phẩm
+                        b Product
                     tr(data-name="products_view")
-                        td Xem
+                        td Read
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                         
                     tr(data-name="products_create" )
-                        td Thêm mới
+                        td Create
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                         
                     tr(data-name="products_edit")
-                        td Chỉnh sửa
+                        td Update
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                         
                     tr(data-name="products_delete")
-                        td Xóa
+                        td Delete
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
@@ -87,30 +87,30 @@ block main
                         td(colspan="4")
                             b Roles
                     tr(data-name="roles_view")
-                        td Xem
+                        td Read
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                         
                     tr(data-name="roles_create" )
-                        td Thêm mới
+                        td Create
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                         
                     tr(data-name="roles_edit")
-                        td Chỉnh sửa
+                        td Update
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                         
                     tr(data-name="roles_delete")
-                        td Xóa
+                        td Delete
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
                     tr(data-name="roles_permissions")
-                        td Phân quyền 
+                        td Permission  
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox" data-id=item.id)
