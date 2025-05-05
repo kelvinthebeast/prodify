@@ -5,7 +5,7 @@ const Account = require("../../models/account.model");
  
  // [GET] /admin/auth/login 
 module.exports.login = (req, res) => {
-    if (!req.cookies.userLoginToken) {
+    if (req.cookies.userLoginToken) {
         res.redirect(`${systemConfig.prefixAdmin}/auth/login`)
     } else {
         res.render(`admin/pages/auth/login`, {
