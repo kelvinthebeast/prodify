@@ -40,3 +40,9 @@ module.exports.loginPost = async (req, res) => {
      res.cookie("userLoginToken", user.token) // add cookie to section
      res.redirect(`${systemConfig.prefixAdmin}/dashboard`)
  }
+
+
+module.exports.logout = async (req, res) => {
+  res.clearCookie('userLoginToken')
+  res.redirect("/admin/auth/login")
+}
