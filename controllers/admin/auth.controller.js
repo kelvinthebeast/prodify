@@ -5,10 +5,14 @@ const Account = require("../../models/account.model");
  
  // [GET] /admin/auth/login 
 module.exports.login = (req, res) => {
- 
-     res.render(`admin/pages/auth/login`, {
-         pageTitle: "Login"
-     })
+    if (!req.cookies.userLoginToken) {
+        res.redirect(`${systemConfig.prefixAdmin}/auth/login`)
+    } else {
+        res.render(`admin/pages/auth/login`, {
+            pageTitle: "Login"
+        })
+    }
+     
  
  }
  // [Post] /admin/auth/login 
