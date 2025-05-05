@@ -1,34 +1,40 @@
 const express = require("express");
 const router = express.Router();
 const multer  = require('multer');
-const upload = multer();
+// const upload = multer();
 // const uploadCloud = require("../../middlewares/admin/uploadCloud.middleware");
+const multerStorage = require("../../helpers/multerStorage")
+const upload = multer({ storage: multerStorage()})
+const validate = require("../../validates/admin/account.validate");
+const accountController = require('../../controllers/admin/account.controller')
 
-// const validate = require("../../validates/admin/account.validate");
-const controller = require("../../controllers/admin/account.controller");
 
+router.get("/", accountController.index);
 
-router.get("/", controller.index);
-
-router.get("/create", controller.create);
+router.get("/create", accountController.create);
 
 router.post("/create", 
     upload.single("avatar"),
     // uploadCloud.upload,
-    // validate.createPost,  
-    controller.createPost);
+    validate.createPost,  
+    accountController.createPost);
 
-router.get("/edit/:id",controller.edit);
+router.get("/edit/:id",accountController.edit);
 
 router.patch("/edit/:id",
     upload.single("avatar"),
     // uploadCloud.upload,
-    // validate.editPatch,
-    controller.editPatch);
+    validate.editPatch,
+    accountController.editPatch);
 
 
 
+router.get("/detail/:id", accountController.getDetailPage)
 
+
+// xoa 
+
+router.patch("/delete/:id", accountController.deleteAccount)
 
     
 module.exports = router;

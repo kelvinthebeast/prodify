@@ -1,0 +1,43 @@
+extends ../../layouts/default.pug
+
+block main
+    h1.mb-4 Account detail
+
+    .card
+        .card-header Information:
+        .card-body
+            .row
+                .col-md-4
+                    img(
+                        src=account.avatar
+                        alt=account.fullName
+                        width="100%"
+                        style="max-width: 200px;"
+                    )
+                .col-md-8
+                    dl
+                        dt Name:
+                        dd #{account.fullName}
+
+                        dt Email:
+                        dd #{account.email}
+
+                        dt Role:
+                        dd #{account.role.title}
+
+                        dt Status:
+                        dd 
+                            if account.status === 'active'
+                                span.badge.badge-success Active
+                            else
+                                span.badge.badge-danger Inactive
+                        
+                        dt createdAt:
+                        dd #{account.createdAt}
+
+                        dt CupdatedAt:
+                        dd #{account.updatedAt}
+
+            a.btn.btn-secondary.mt-3(href=`${prefixAdmin}/accounts`) ← Back
+
+    script(src="/admin/js/account.js")
