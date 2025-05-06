@@ -1,5 +1,5 @@
 const Account = require("../../models/account.model");
- const md5 = require("md5");
+const md5 = require("md5");
  
  const systemConfig = require("../../config/system");
  
@@ -34,7 +34,7 @@ module.exports.loginPost = async (req, res) => {
  
      if(md5(password) != user.password) {
          req.flash("error", "Wrong password!!!!");
-         res.redirect("back");
+         res.redirect(`${systemConfig.prefixAdmin}/auth/login`);
          return;
      }
  

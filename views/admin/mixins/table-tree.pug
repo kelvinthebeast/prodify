@@ -38,14 +38,16 @@ mixin table-tree(items, level = 1)
            href=`${prefixAdmin}/products-category/detail/${item.id}`
            class="btn btn-secondary btn-sm"
          ) Detail
-         a(
-           href=`${prefixAdmin}/products-category/edit/${item.id}`
-           class="btn btn-warning btn-sm"
-         ) Edit 
-         button(
-           class="btn btn-danger btn-sm"
-           button-delete
-           data-id=item.id
-         ) Delete
+         if(role.permissions.includes('products-category_edit'))
+          a(
+            href=`${prefixAdmin}/products-category/edit/${item.id}`
+            class="btn btn-warning btn-sm"
+          ) Edit 
+         if(role.permissions.includes('products-category_delete'))
+          button(
+            class="btn btn-danger btn-sm"
+            button-delete
+            data-id=item.id
+          ) Delete
      if item.children && item.children.length > 0
        +table-tree(item.children, level + 1)

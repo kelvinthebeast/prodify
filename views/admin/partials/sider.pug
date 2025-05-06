@@ -5,15 +5,21 @@
             li 
                 //- a(href=`${prefixAdmin}/dashboard`) Dashboard
                 a(href= prefixAdmin + '/dashboard') Dashboard
+            if(role.permissions.includes("products_view"))
+                li 
+                    a(href= prefixAdmin + '/products') Product
+            if(role.permissions.includes("products-category_view"))
             
-            li 
-                a(href= prefixAdmin + '/products') Product
-            li 
-                a(href= prefixAdmin + '/products-category') Product Category
-                
-            li
-                a(href=prefixAdmin + "/roles") Roles
-            li 
-                a(href=prefixAdmin + "/roles/permissions") Permissions
-            li 
-                a(href=prefixAdmin + "/accounts") Accounts
+                li 
+                    a(href= prefixAdmin + '/products-category') Product Category
+            if(role.permissions.includes("roles_view"))
+            
+                li
+                    a(href=prefixAdmin + "/roles") Roles
+            if(role.permissions.includes("roles_permissions"))
+                li 
+                    a(href=prefixAdmin + "/roles/permissions") Permissions
+            
+            if(role.permissions.includes("accounts_view"))
+                li 
+                    a(href=prefixAdmin + "/accounts") Accounts
