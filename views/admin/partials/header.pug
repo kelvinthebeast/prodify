@@ -5,4 +5,6 @@ header.header
                 .inner-logo 
                     a(href="/admin/dashboard") ADMIN 
             .col-9.text-end
-                a.btn.btn-danger(href="/admin/auth/logout") Đăng xuất
+                a.btn.btn-light(href="/admin/my-account") #{user.fullName}
+                
+                a.btn.btn-danger.ms-2(href="/admin/auth/logout") Sign out
