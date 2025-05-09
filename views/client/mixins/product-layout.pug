@@ -1,6 +1,9 @@
 include product-item.pug
 mixin product-grid(products)
-  .container
-        .row.g-4.justify-content-center
-          each item in products
-            +product-item(item)
+  if products && products.length
+    .container
+      .row.g-4.justify-content-center
+        each item in products
+          +product-item(item)
+  else
+    .text-center.text-muted Not found.

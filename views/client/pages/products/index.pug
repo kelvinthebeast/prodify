@@ -8,11 +8,11 @@ block main
   .container.my-5
     .row
       .col-12
-        +box-head("Products Page")
+        +box-head(pageTitle)
       
       section.section-products-featured.my-5
         .col-12
-          +box-head("Sản phẩm nổi bật")
-          +product-grid(productsFeatured)
+          //- +box-head("Promote products")
+          +product-grid(products)
 
     
