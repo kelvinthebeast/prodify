@@ -14,7 +14,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.getDetailPage = async (req, res) => {
   try {
-    const slug = req.params.slug;
+    const slug = req.params.slugProduct;
     const product = await Product.findOne({
       deleted: false,
       status: "active",

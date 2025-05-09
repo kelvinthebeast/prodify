@@ -7,7 +7,7 @@ mixin product-item(item)
           .inner-featured Nổi bật
         .inner-content.mt-3
           h3.product-title 
-            a(href=`/products/${item.slug}`) #{item.title}
+            a(href=`/products/detail/${item.slug}`) #{item.title}
           .price-box
             span.inner-price-new.text-danger.me-2 #{item.priceNew}$
             span.inner-price-old.text-muted.text-decoration-line-through #{item.price}$
