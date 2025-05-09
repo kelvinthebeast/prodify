@@ -3,6 +3,8 @@ mixin product-item(item)
     .product-item.shadow-lg.p-3.border.rounded.h-100
       .inner-card
         img.product-img(src=item.thumbnail, alt=item.title, class="img-fluid")
+        if(item.featured=="1")
+          .inner-featured Nổi bật
         .inner-content.mt-3
           h3.product-title 
             a(href=`/products/${item.slug}`) #{item.title}

@@ -245,3 +245,23 @@ body {
 tk: nhanlt07424 */
 
 /* mongodb+srv://nhanlt07424:<db_password>@cluster0.j0m4pbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 */
+
+
+.inner-featured {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff4d4f; /* đỏ nổi bật */
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+
+.product-item {
+  position: relative;
+}
