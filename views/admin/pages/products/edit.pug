@@ -18,7 +18,7 @@ block main
     )
       .row.g-4
         .col-md-6
-          div(class="form-group")
+          .form-group
             label(for="title" class="form-label") Title
             input(
               type="text"
@@ -28,24 +28,34 @@ block main
               required
               value=product.title
             )
+
         .row.g-4
-          div(class="form-group")
+          .form-group
             label(for="product_category_id") Category
             select(
-                name="product_category_id"
-                id="product_category_id"
-                class="form-control"
+              name="product_category_id"
+              id="product_category_id"
+              class="form-control"
             )
-                option(value="") -- Select category --
-                if (category)
-                    +select-tree(category, 1, product.product_category_id)
+              option(value="") -- Select category --
+              if (category)
+                +select-tree(category, 1, product.product_category_id)
+
           .col-md-6
-          div.form-group
-            label(for="position" class="form-label") Position
-            input(type="number", class="form-control", id="position", name="position", placeholder="Auto increase", min="1", value=product.position)
+            .form-group
+              label(for="position" class="form-label") Position
+              input(
+                type="number"
+                class="form-control"
+                id="position"
+                name="position"
+                placeholder="Auto increase"
+                min="1"
+                value=product.position
+              )
 
         .col-12
-          div(class="form-group")
+          .form-group
             label(for="desc" class="form-label") Description
             textarea(
               class="form-control textarea-mce"
@@ -54,38 +64,107 @@ block main
               rows="5"
             ) #{product.description}
 
+        .col-12
+          .form-group.feature-css
+            label.form-label.d-block Featured
+
+            .d-flex.gap-3
+              .form-check.form-check-inline
+                input.form-check-input(
+                  type="radio",
+                  id="featured1",
+                  name="featured",
+                  value="1",
+                  checked=product.featured == '1'
+                )
+                label.form-check-label(for="featured1") Nổi bật
+
+              .form-check.form-check-inline
+                input.form-check-input(
+                  type="radio",
+                  id="featured0",
+                  name="featured",
+                  value="0",
+                  checked=product.featured == '0'
+                )
+                label.form-check-label(for="featured0") Không
+
+
         .col-md-4
-          div.form-group
+          .form-group
             label(for="price" class="form-label") Price
-            input(type="number", class="form-control", id="price", name="price", value=product.price, min="0")
+            input(
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              value=product.price
+              min="0"
+            )
 
         .col-md-4
-          div.form-group
+          .form-group
             label(for="discount" class="form-label") Discount (%)
-            input(type="number", class="form-control", id="discount", name="discountPercentage", value=product.discountPercentage, min="0")
+            input(
+              type="number"
+              class="form-control"
+              id="discount"
+              name="discountPercentage"
+              value=product.discountPercentage
+              min="0"
+            )
 
         .col-md-4
-          div.form-group
+          .form-group
             label(for="thumbnail" class="form-label") Photo
-            input(type="file", class="form-control", id="thumbnail", name="thumbnail", accept="image/*", enctype="multipart/form-data", upload-image-input)
+            input(
+              type="file"
+              class="form-control"
+              id="thumbnail"
+              name="thumbnail"
+              accept="image/*"
+              enctype="multipart/form-data"
+              upload-image-input
+            )
             if product.thumbnail
               .mt-2
-                img(src=product.thumbnail, alt="Thumbnail", class="img-thumbnail", style="width: 100px; height: auto;", upload-image-preview)
+                img(
+                  src=product.thumbnail
+                  alt="Thumbnail"
+                  class="img-thumbnail"
+                  style="width: 100px; height: auto;"
+                  upload-image-preview
+                )
 
         .col-12
-          div.form-group
+          .form-group
             label(class="form-label d-block") Status
             .form-check.form-check-inline
-              input(type="radio", class="form-check-input", id="statusActive", name="status", value="active", checked=(product.status == 'active' ? true : false))
-              label(for="statusActive", class="form-check-label") Active
+              input(
+                type="radio"
+                class="form-check-input"
+                id="statusActive"
+                name="status"
+                value="active"
+                checked=(product.status == 'active' ? true : false)
+              )
+              label(for="statusActive" class="form-check-label") Active
+
             .form-check.form-check-inline
-              input(type="radio", class="form-check-input", id="statusInactive", name="status", value="inactive", checked=(product.status == 'inactive' ? true : false))
-              label(for="statusInactive", class="form-check-label") Inactive
+              input(
+                type="radio"
+                class="form-check-input"
+                id="statusInactive"
+                name="status"
+                value="inactive"
+                checked=(product.status == 'inactive' ? true : false)
+              )
+              label(for="statusInactive" class="form-check-label") Inactive
 
       .text-center.mt-4
         button(
           type="submit"
           class="btn btn-primary btn-lg px-5"
         ) Update
-
+  link(rel="stylesheet", href="/admin/css/feature.css")
   script(src="/admin/js/product.js")

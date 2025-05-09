@@ -1,23 +1,18 @@
 extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
-
+include ../../mixins/product-item.pug 
+include ../../mixins/product-layout.pug
 block main
   
+    
   .container.my-5
     .row
       .col-12
         +box-head("Products Page")
+      
+      section.section-products-featured.my-5
+        .col-12
+          +box-head("Sản phẩm nổi bật")
+          +product-grid(productsFeatured)
 
-    .row.g-4
-      each item in products
-        .col-md-4.mb-4
-          .product-item.shadow-lg.p-3.border.rounded
-            .inner-card
-              img.product-img(src=item.thumbnail, alt=item.title, class="img-fluid")
-              .inner-content.mt-3
-                h3.product-title 
-                  a(href=`/products/${item.slug}`) #{item.title}
-                .price-box
-                  span.inner-price-new.text-danger.me-2 #{item.priceNew}$
-                  span.inner-price-old.text-muted.text-decoration-line-through #{item.price}$
-                .discount.text-success.mt-1 #{item.discountPercentage}% off
+    
