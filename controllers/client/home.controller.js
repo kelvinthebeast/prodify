@@ -1,17 +1,21 @@
 
-// const ProductCategory = require('../../models/product-category.model')
-// const createTreeHelper = require('../../helpers/createTree')
-const productsHelper = require("../../helpers/product");
-module.exports.index = async (req, res) => { 
+const productsHelper = require("../../helpers/products");
+const Product = require("../../models/product.model")
+module.exports.index = async (req, res) => {
+
   const products = await Product.find({
     deleted: false,
     featured: "1",
     status: 'active'
-  }).sort({position: "desc"});
+  })
 
-  const newProducts = productsHelper.priceNewProducts(products);
-  console.log(products)
-  res.render("client/pages/home/index", { pageTitle: "Home", products: newProducts });
+  const productsHaveNewPrice = productsHelper.priceNewProducts(products);
+
+  console.log("productHaveNewPrice" , productsHaveNewPrice);
+  res.render('client/pages/home/index', {
+    pageTitle: "Home",
+    products: productsHaveNewPrice
+  })
 }
 
 module.exports.create = (req, res) => {
