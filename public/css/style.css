@@ -265,3 +265,17 @@ tk: nhanlt07424 */
 .product-item {
   position: relative;
 }
+.box-head {
+  background-color: #e6f4ea; /* xanh lá nhạt nhẹ nhàng */
+  padding: 16px;
+  border-left: 5px solid #28a745; /* xanh lá đậm Bootstrap */
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.inner-title {
+  margin: 0;
+  color: #28a745; /* xanh lá tươi */
+  font-weight: 600;
+  font-size: 1.5rem;
+}

@@ -2,11 +2,18 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug 
 include ../../mixins/product-layout.pug
 block main 
-  .section-products-featured.mb-5
+  .section-products-featured.mb-5(style="margin-bottom: 8px")
     .container 
       .row
         .col-12 
           +box-head("Sản phẩm nổi bật")
       +product-grid(products)
+    
+  .section-products-featured.mb-5.mt-5
+    .container 
+      .row
+        .col-12 
+          +box-head("Sản phẩm mới")
+      +product-grid(latestProducts)
                  
       
