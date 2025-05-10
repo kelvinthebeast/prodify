@@ -1,9 +1,6 @@
 extends ../../layouts/default.pug
 
 
-  
-
-
 block main
   .container.mt-4
     .row
@@ -54,15 +51,40 @@ block main
           else
             p.text-muted Thông tin kho hàng không có sẵn.
 
-        if product.position
-          p.mb-2.position-info
-            strong Vị trí:
-            span.ms-2 #{product.position}
+          if product.position
+            p.mb-2.position-info
+              strong Vị trí:
+              span.ms-2 #{product.position}
+          .container.mt-4
+    .row
+      .col-md-6.mb-4
+        .product-thumbnail-container
+          if product.thumbnail
+            img(src=product.thumbnail, alt=product.title)
+          else
+            .product-thumbnail-placeholder
+              span No Image
 
+      .col-md-6
+        .product-info-container
+          // ... thông tin sản phẩm ...
+
+      // Phần mô tả sản phẩm nằm dưới và bên trái
+    .row.mt-4
+      .col-md-6
         if product.description
-          .description-section
+          .description-section.left-aligned-description
             h4.description-title Mô Tả Sản Phẩm
-            div.description-content !{product.description}
+            .description-short
+              each line, index in product.description.split('\n').slice(0, 2)
+                p !{line}
+              if product.description.split('\n').length > 2
+                button.read-more-btn Xem thêm
+
+            .description-full(style="display: none;")
+              each line in product.description.split('\n')
+                p !{line}
+              button.read-less-btn Thu gọn
 
         .mt-4
           a.btn.btn-warning.btn-lg.px-4.back-link(href="/products")
@@ -70,5 +92,6 @@ block main
             | Quay lại
 
   script(src="/admin/js/product.js")
+  script(src="/js/detailPage.js") 
   link(rel="stylesheet", href="/css/detailPage.css")
   link(rel="stylesheet", href="/css/submenu/submenu.css")

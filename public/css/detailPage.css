@@ -178,3 +178,105 @@
   border-radius: 8px;
   border: 1px solid #ccc;
 }
+
+.description-section {
+  width: 80%; /* Điều chỉnh độ rộng tổng thể của section */
+  max-width: 960px; /* Độ rộng tối đa để không quá rộng trên màn hình lớn */
+  margin: 20px auto; /* Căn giữa section theo chiều ngang và tạo khoảng trắng trên dưới */
+  padding: 20px;
+  border: 1px solid #f0f0f0; /* Viền nhẹ (tùy chọn) */
+  border-radius: 5px; /* Bo góc nhẹ (tùy chọn) */
+  box-sizing: border-box; /* Đảm bảo padding và border không ảnh hưởng đến kích thước */
+  text-align: left; /* Căn trái nội dung bên trong để dễ đọc */
+}
+
+.description-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center; /* Căn giữa tiêu đề */
+  margin-bottom: 1.5rem;
+}
+
+.description-short,
+.description-full {
+  margin-bottom: 1rem;
+}
+
+.description-short p,
+.description-full p {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+.description-full h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.description-full ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.description-full li {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.read-more-btn,
+.read-less-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: block; /* Hiển thị trên dòng riêng và căn giữa dễ hơn */
+  margin: 1rem auto; /* Căn giữa nút */
+}
+
+.read-more-btn:hover,
+.read-less-btn:hover {
+  background-color: #0056b3;
+}
+
+.product-image {
+  width: 50%;
+  height: auto; /* Để giữ tỷ lệ khung hình */
+}
+
+/* Ví dụ: Đặt chiều rộng tối đa cho hình ảnh có class "description-image" là 300 pixel */
+.description-image {
+  max-width: 300px;
+  height: auto;
+}
+
+/* ... các CSS khác của bạn ... */
+
+.left-aligned-description {
+  text-align: left; /* Căn trái nội dung */
+  padding: 20px;
+  border: 1px solid #f0f0f0; /* Thêm viền nhẹ (tùy chọn) */
+  border-radius: 5px; /* Bo góc nhẹ (tùy chọn) */
+  box-sizing: border-box;
+}
+
+.left-aligned-description .description-title {
+  text-align: left; /* Căn trái tiêu đề */
+  margin-bottom: 1rem;
+}
+
+.left-aligned-description .read-more-btn,
+.left-aligned-description .read-less-btn {
+  text-align: left; /* Căn trái nút */
+  margin-left: 0; /* Đảm bảo không có margin trái tự động */
+}
