@@ -4,7 +4,10 @@ const productController = require("../../controllers/client/product.controller")
 router.get("/", productController.index);
 
 
-router.get("/detail/:slugProduct", productController.getDetailPage)
+
 
 router.get("/:slugCategory", productController.category)
+
+
+router.get("/detail/:slugProduct", productController.getDetailPage)
 module.exports = router;

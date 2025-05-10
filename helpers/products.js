@@ -5,3 +5,19 @@ module.exports.priceNewProducts = (products)=> {
   })
   return newProducts;
 }
+
+// module.exports.priceNewProduct = (product) => {
+//   const priceNew = (product.price*(100 - product.discountPercentage)/100).toFixed(0);
+//   return priceNew;
+// }
+
+module.exports.priceNew = (product) => {
+  if (product && typeof product.price === 'number' && typeof product.discountPercentage === 'number') {
+    const priceNew = (product.price * (100 - product.discountPercentage) / 100).toFixed(0);
+    return parseFloat(priceNew); // Chuyển về kiểu số để dễ sử dụng
+  } else {
+    // Xử lý trường hợp product không có giá hoặc discountPercentage hợp lệ
+    console.error("Lỗi: Đối tượng product không có thuộc tính price hoặc discountPercentage hợp lệ.");
+    return null; // Hoặc bạn có thể trả về giá gốc hoặc một giá trị mặc định khác
+  }
+};

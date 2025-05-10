@@ -101,6 +101,17 @@ block main
               value=product.price
               min="0"
             )
+        .col-md-4
+          .form-group
+            label(for="quantity" class="form-label") Quantity
+            input(
+              type="number"
+              class="form-control"
+              id="quantity"
+              name="quantity"
+              value=product.quantity
+              min="0"
+            )
 
         .col-md-4
           .form-group

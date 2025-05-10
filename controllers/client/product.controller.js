@@ -21,6 +21,27 @@ module.exports.getDetailPage = async (req, res) => {
       slug: slug
     })
 
+    // if (product.product_category_id) {
+    //   const category = await ProductCategory.findOne({
+    //     deleted: false,
+    //     _id: product.product_category_id,
+    //     status: "active"
+    //   })
+    //   product.category = category;
+    // }
+
+
+    if (product.product_category_id) {
+      const category = await ProductCategory.findOne({
+        deleted: false,
+        _id: product.product_category_id,
+        status: "active"
+      })
+
+      product.category = category;
+    }
+    product.priceNew = productsHelper.priceNew(product);
+
     res.render("client/pages/products/detail", {
       pageTitle: product.title,
       product: product

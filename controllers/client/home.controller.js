@@ -16,7 +16,7 @@ module.exports.index = async (req, res) => {
     deleted: false,
     status: 'active'
   }).sort({ position: 'desc' }).limit(4);
-  console.log("productHaveNewPrice" , productsHaveNewPrice);
+  // console.log("productHaveNewPrice" , productsHaveNewPrice);
   res.render('client/pages/home/index', {
     pageTitle: "Home",
     products: productsHaveNewPrice,
