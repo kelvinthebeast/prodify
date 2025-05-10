@@ -3,5 +3,8 @@ header.header
         .row.align-items-center 
             .col-3 
                 .inner-logo 
-                    //- a(href="/admin/dashboard") ADMIN 
-            .col-9
+                    a(href="/admin/dashboard") ADMIN 
+            .col-9.text-end
+                a.btn.btn-light(href="/admin/my-account") #{user.fullName}
+                
+                a.btn.btn-danger.ms-2(href="/admin/auth/logout") Sign out

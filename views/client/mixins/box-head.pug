@@ -1,3 +1,24 @@
 mixin box-head(title)
     .box-head 
         h2.inner-title #{title}
+
+mixin box-head-product(title)
+    .box-head-product
+        h2.inner-title #{title}
+    style.
+        .box-head-product {
+            background-color: #e8f5e9; 
+            padding: 12px 20px;
+            border-left: 4px solid #2e7d32; 
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .box-head-product .inner-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2e7d32;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }

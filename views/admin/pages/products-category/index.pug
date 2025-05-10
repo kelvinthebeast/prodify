@@ -5,29 +5,32 @@ include ../../mixins/alert.pug
 block main
 
   +alert-success(5500) 
-  
-  h1 Product category
-  .card.mb-3
-    .card-header List item
-    .card-body
-      .row
-      
-        .col-8
-        .col-4
-          a(href=`${prefixAdmin}/products-category/create`, class="btn btn-outline-success") + Add new
-      table.table.table-striped.table-bordered(checkbox-multi)
-        thead.table-dark
-          tr
-            //- th
-            //-   input(type="checkbox", name="checkall")
-            th STT
-            th Image
-            th Title
-            th Position
-            th Status
-            th Actions
-        tbody
-          +table-tree(records)
+  if(role.permissions.includes("products-category_view"))
+    h1 Product category
+    .card.mb-3
+      .card-header List item
+      .card-body
+        .row
+        
+          .col-8
+          .col-4
+            if(role.permissions.includes('products-category_create'))
+              a(href=`${prefixAdmin}/products-category/create`, class="btn btn-outline-success") + Add new
+        table.table.table-striped.table-bordered(checkbox-multi)
+          thead.table-dark
+            tr
+              //- th
+              //-   input(type="checkbox", name="checkall")
+              th STT
+              th Image
+              th Title
+              th Position
+              th Status
+              th Actions
+          tbody
+            +table-tree(records)
+  else 
+    h1 NOT FOUND  
   form(
    
     action=""

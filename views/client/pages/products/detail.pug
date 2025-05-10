@@ -1,46 +1,97 @@
 extends ../../layouts/default.pug
 
+
 block main
-  .container.mt-5
-    if (product.title)
-      h1.mb-4.text-center.text-primary #{product.title}
+  .container.mt-4
+    .row
+      .col-md-6.mb-4
+        .product-thumbnail-container
+          if product.thumbnail
+            img(src=product.thumbnail, alt=product.title)
+          else
+            .product-thumbnail-placeholder
+              span No Image
 
-    .card.shadow.p-4
-      .row.g-4
-        if (product.thumbnail)
-          .col-md-4.d-flex.justify-content-center.align-items-center
-            img(src=product.thumbnail, alt="Product Thumbnail", style="max-width: 100%; border-radius: 10px;")
+      .col-md-6
+        .product-info-container
+          if product.title
+            h1.product-title #{product.title}
+          if product.category && product.category.title
+            h2.product-category-title #{product.category.title}
 
-        .col-md-8
-          .row.mb-3
-            if (product.price)
-              .col-6
-                p.mb-2.text-muted Price:
-                h5.text-dark #{product.price}$
-            if (product.discountPercentage)
-              .col-6
-                p.mb-2.text-muted Discount:
-                h5.text-danger #{product.discountPercentage}%
+          .price-section
+            if product.priceNew !== undefined && product.price !== undefined && product.priceNew !== product.price
+              h3.current-price #{product.priceNew}$
+              small.original-price #{product.price}$
+              if product.discountPercentage && product.discountPercentage > 0
+                span.discount-badge -#{product.discountPercentage}%
+            else if product.price !== undefined
+              h3.current-price #{product.price}$
+            else
+              h3.current-price Price not available
 
-          .row.mb-3
-            if (product.stock)
-              .col-6
-                p.mb-2.text-muted Stock:
-                h5.text-dark #{product.stock}
-            if (product.position)
-              .col-6
-                p.mb-2.text-muted Position:
-                h5.text-dark #{product.position}
+          if product.quantity !== undefined && product.quantity !== null
+            p.availability(class=product.quantity > 0 ? '' : 'out-of-quantity')
+              strong Trạng thái:
+              span.ms-2 #{product.quantity > 0 ? 'Còn hàng' : 'Hết hàng'}
 
-          
+            if product.quantity > 0
+              .purchase-section
+                strong.purchase-title Mua Ngay
+                form(action=`/cart/add/${product.id}`, method="POST")
+                  .mb-3
+                    label.form-label.quantity-label(for="quantity") Số lượng:
+                    input.form-control.quantity-input(type="number", name="quantity", id="quantity", value="1", min="1", max=product.quantity)
+                  button.btn.add-to-cart-button.btn-block(type="submit")
+                    i.bi.cart-plus-fill.me-2
+                    | Thêm vào Giỏ Hàng
+            else
+              .purchase-section
+                p.text-warning Sản phẩm đã hết hàng.
+          else
+            p.text-muted Thông tin kho hàng không có sẵn.
 
-          if (product.description)
-            .row.mb-3
-              .col-12
-                p.mb-2.text-muted Description:
-                div(style="background: #f8f9fa; padding: 15px; border-radius: 8px;") !{product.description}
+          if product.position
+            p.mb-2.position-info
+              strong Vị trí:
+              span.ms-2 #{product.position}
+          .container.mt-4
+    .row
+      .col-md-6.mb-4
+        .product-thumbnail-container
+          if product.thumbnail
+            img(src=product.thumbnail, alt=product.title)
+          else
+            .product-thumbnail-placeholder
+              span No Image
 
-      .text-center.mt-4
-        a(href=`/products`, class="btn btn-warning btn-lg px-5") back
+      .col-md-6
+        .product-info-container
+          // ... thông tin sản phẩm ...
+
+      // Phần mô tả sản phẩm nằm dưới và bên trái
+    .row.mt-4
+      .col-md-6
+        if product.description
+          .description-section.left-aligned-description
+            h4.description-title Mô Tả Sản Phẩm
+            .description-short
+              each line, index in product.description.split('\n').slice(0, 2)
+                p !{line}
+              if product.description.split('\n').length > 2
+                button.read-more-btn Xem thêm
+
+            .description-full(style="display: none;")
+              each line in product.description.split('\n')
+                p !{line}
+              button.read-less-btn Thu gọn
+
+        .mt-4
+          a.btn.btn-warning.btn-lg.px-4.back-link(href="/products")
+            i.bi.arrow-left-circle-fill.me-2
+            | Quay lại
 
   script(src="/admin/js/product.js")
+  script(src="/js/detailPage.js") 
+  link(rel="stylesheet", href="/css/detailPage.css")
+  link(rel="stylesheet", href="/css/submenu/submenu.css")

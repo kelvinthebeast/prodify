@@ -1,0 +1,60 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  padding: 10px 16px;
+  display: block;
+  white-space: nowrap;
+}
+
+/* ===== MENU CHÍNH ===== */
+.inner-menu > ul {
+  display: flex;
+  gap: 30px;
+}
+
+.inner-menu > ul > li {
+  position: relative;
+}
+
+/* ===== SUBMENU ===== */
+.inner-menu li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  min-width: 200px;
+  z-index: 999;
+}
+
+/* ===== SUBMENU CẤP 2 TRỞ ĐI (BÊN TRÁI, THẲNG HÀNG) ===== */
+.inner-menu li ul li {
+  position: relative;
+}
+
+.inner-menu li ul li ul {
+  top: 0;             /* Quan trọng: giữ thẳng hàng theo Y */
+  left: auto;
+  right: 100%;        /* Đẩy qua trái */
+}
+
+/* ===== HIỆN SUBMENU ===== */
+.inner-menu li:hover > ul {
+  display: block;
+}
+
+/* ===== HOVER LINK ===== */
+.inner-menu li a:hover {
+  background-color: #f5f5f5;
+  color: #007bff;
+}

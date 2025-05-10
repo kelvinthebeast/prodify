@@ -1,111 +1,282 @@
-/* Container chính */
-.container.mt-5 {
-  margin-top: 50px;
-  padding-bottom: 50px;
+
+
+  /* CSS tùy chỉnh theo phong cách Shopee/Tiki */
+  .product-info-container {
+    padding: 15px;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 15px;
+  }
+
+  .product-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #212529;
+    margin-bottom: 8px;
+  }
+
+  .product-category-title {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+
+  .price-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .current-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #dc3545; /* Màu đỏ như giá khuyến mãi thường thấy */
+    margin-right: 10px;
+  }
+
+  .original-price {
+    font-size: 16px;
+    color: #777;
+    text-decoration: line-through;
+    margin-right: 5px;
+  }
+
+  .discount-badge {
+    background-color: #ffc107; /* Màu vàng cam như badge giảm giá */
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .availability {
+    font-size: 14px;
+    color: #28a745; /* Màu xanh lá cây cho còn hàng */
+    margin-bottom: 15px;
+  }
+
+  .out-of-stock {
+    color: #dc3545; /* Màu đỏ cho hết hàng */
+  }
+
+  .purchase-section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+  }
+
+  .purchase-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #343a40;
+  }
+
+  .quantity-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .quantity-label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #343a40;
+  }
+
+  .quantity-input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .add-to-cart-button {
+    background-color: #ff4d00; /* Màu cam đặc trưng của Shopee */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-to-cart-button:hover {
+    background-color: #e04100;
+  }
+
+  .position-info {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .description-section {
+    margin-top: 20px;
+    border-top: 1px solid #efefef;
+    padding-top: 15px;
+  }
+
+  .description-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #343a40;
+  }
+
+  .description-content {
+    white-space: pre-line;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .back-link {
+    margin-top: 20px;
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: #0056b3;
+  }
+
+
+.product-thumbnail-container {
+  width: 250px; /* Kích thước chiều rộng mong muốn */
+  height: 250px; /* Kích thước chiều cao mong muốn (để tạo hình vuông) */
+  overflow: hidden; /* Ẩn phần ảnh vượt quá kích thước container */
+  display: flex; /* Sử dụng flexbox để căn giữa ảnh */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  border-radius: 8px; /* Bo tròn góc (tùy chọn) */
+  border: 1px solid #ccc; /* Thêm viền (tùy chọn) */
 }
 
-/* Card sản phẩm */
-.card {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Tăng độ đậm của shadow */
-  transition: box-shadow 0.3s ease;
+.product-thumbnail-container img {
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng container */
+  max-height: 100%; /* Đảm bảo ảnh không vượt quá chiều cao container */
+  object-fit: cover; /* Thay đổi từ 'contain' thành 'cover' */
+  transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng zoom nhẹ khi hover (tùy chọn) */
 }
 
-/* Hiệu ứng hover cho card */
-.card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Card nổi lên khi hover */
+.product-thumbnail-container:hover img {
+  transform: scale(1.05); /* Hiệu ứng zoom nhẹ khi hover (tùy chọn) */
 }
 
-/* Phần hình ảnh sản phẩm */
-img {
-  max-width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-/* Hiệu ứng hover cho hình ảnh */
-img:hover {
-  transform: scale(1.05); /* Hình ảnh phóng to khi hover */
-}
-
-/* Nội dung card */
-.card-body {
-  padding: 20px;
-}
-
-/* Tiêu đề sản phẩm */
-h1.mb-4 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #007bff; /* Màu xanh dương cho tiêu đề */
-}
-
-/* Thông tin sản phẩm */
-.row.mb-3 p.mb-2 {
-  margin-bottom: 0;
-}
-
-.text-muted {
-  color: #6c757d;
-}
-
-/* Giá sản phẩm */
-h5.text-dark {
-  font-size: 1.25rem;
-  color: #343a40;
-  font-weight: bold;
-}
-
-/* Giá cũ (nếu có) */
-h5.text-muted.text-decoration-line-through {
-  text-decoration: line-through;
-  color: #6c757d;
-  font-size: 1rem;
-}
-
-/* Giảm giá */
-h5.text-danger {
-  font-size: 1.25rem;
-  color: #dc3545;
-  font-weight: bold;
-}
-
-/* Mô tả sản phẩm */
-div {
+.product-thumbnail-placeholder {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f8f9fa;
-  padding: 15px;
+  color: #6c757d;
   border-radius: 8px;
-  font-size: 1rem;
-  color: #333;
+  border: 1px solid #ccc;
 }
 
-/* Nút quay lại */
-.btn-warning {
-  background-color: #f39c12;
+.description-section {
+  width: 80%; /* Điều chỉnh độ rộng tổng thể của section */
+  max-width: 960px; /* Độ rộng tối đa để không quá rộng trên màn hình lớn */
+  margin: 20px auto; /* Căn giữa section theo chiều ngang và tạo khoảng trắng trên dưới */
+  padding: 20px;
+  border: 1px solid #f0f0f0; /* Viền nhẹ (tùy chọn) */
+  border-radius: 5px; /* Bo góc nhẹ (tùy chọn) */
+  box-sizing: border-box; /* Đảm bảo padding và border không ảnh hưởng đến kích thước */
+  text-align: left; /* Căn trái nội dung bên trong để dễ đọc */
+}
+
+.description-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center; /* Căn giữa tiêu đề */
+  margin-bottom: 1.5rem;
+}
+
+.description-short,
+.description-full {
+  margin-bottom: 1rem;
+}
+
+.description-short p,
+.description-full p {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+.description-full h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.description-full ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.description-full li {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.read-more-btn,
+.read-less-btn {
+  background-color: #007bff;
+  color: white;
   border: none;
-  font-size: 1.125rem;
   padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
+  display: block; /* Hiển thị trên dòng riêng và căn giữa dễ hơn */
+  margin: 1rem auto; /* Căn giữa nút */
 }
 
-.btn-warning:hover {
-  background-color: #e67e22;
+.read-more-btn:hover,
+.read-less-btn:hover {
+  background-color: #0056b3;
 }
 
-/* Responsive cho các màn hình nhỏ */
-@media (max-width: 768px) {
-  .row.g-4 {
-    gap: 1.5rem; /* Tăng khoảng cách giữa các cột */
-  }
+.product-image {
+  width: 50%;
+  height: auto; /* Để giữ tỷ lệ khung hình */
+}
 
-  .col-md-4, .col-md-8 {
-    flex: 1 1 100%; /* Cột trở thành dạng dọc trên các màn hình nhỏ */
-  }
+/* Ví dụ: Đặt chiều rộng tối đa cho hình ảnh có class "description-image" là 300 pixel */
+.description-image {
+  max-width: 300px;
+  height: auto;
+}
 
-  h1.mb-4 {
-    font-size: 1.5rem; /* Giảm kích thước tiêu đề trên màn hình nhỏ */
-  }
+/* ... các CSS khác của bạn ... */
+
+.left-aligned-description {
+  text-align: left; /* Căn trái nội dung */
+  padding: 20px;
+  border: 1px solid #f0f0f0; /* Thêm viền nhẹ (tùy chọn) */
+  border-radius: 5px; /* Bo góc nhẹ (tùy chọn) */
+  box-sizing: border-box;
+}
+
+.left-aligned-description .description-title {
+  text-align: left; /* Căn trái tiêu đề */
+  margin-bottom: 1rem;
+}
+
+.left-aligned-description .read-more-btn,
+.left-aligned-description .read-less-btn {
+  text-align: left; /* Căn trái nút */
+  margin-left: 0; /* Đảm bảo không có margin trái tự động */
 }

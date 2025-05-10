@@ -1,0 +1,39 @@
+.feature-css {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  background-color: #f8f9fa;
+}
+
+.feature-css label.form-label {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: block;
+  color: #343a40;
+}
+
+.feature-css .d-flex {
+  display: flex;
+  gap: 1.5rem; /* khoảng cách giữa 2 radio */
+  align-items: center; /* căn giữa theo chiều dọc */
+}
+
+.feature-css .form-check-inline {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0; /* xóa khoảng trắng dư */
+}
+
+.feature-css .form-check-input {
+  width: 14px;
+  height: 14px;
+  margin-top: 0;  /* tránh lệch trên */
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.feature-css .form-check-label {
+  font-size: 0.95rem;
+  color: #495057;
+  cursor: pointer;
+}

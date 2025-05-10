@@ -44,31 +44,34 @@ block main
                 rows="5"
             )
         
-        //- div(class="form-group form-check form-check-inline")
-        //-     input(
-        //-         type="radio"
-        //-         class="form-check-input"
-        //-         id="featured1"
-        //-         name="featured"
-        //-         value="1"
-        //-     )
-        //-     label(for="featured1" class="form-check-label") Nổi bật
-        //-     div(class="form-group form-check form-check-inline")
-        //-     input(
-        //-         type="radio"
-        //-         class="form-check-input"
-        //-         id="featured0"
-        //-         name="featured"
-        //-         value="0"
-        //-         checked
-        //-     )
-        //-     label(for="featured0" class="form-check-label") Không
+        div(class="form-group form-check form-check-inline")
+            input(
+                type="radio"
+                class="form-check-input"
+                id="featured1"
+                name="featured"
+                value="1"
+            )
+            label(for="featured1" class="form-check-label") Nổi bật
+            div(class="form-group form-check form-check-inline")
+            input(
+                type="radio"
+                class="form-check-input"
+                id="featured0"
+                name="featured"
+                value="0"
+                checked
+            )
+            label(for="featured0" class="form-check-label") Không
 
 
         div.form-group
             label(for="price") Price
             input(type="number", class="form-control", id="price", name="price", value="", min="0")
-
+        
+        div.form-group
+            label(for="quantity") Quantity
+            input(type="number", class="form-control", id="quantity", name="quantity", value="", min="0")
         div.form-group
             label(for="discount") % Discount
             input(type="number", class="form-control", id="discount", name="discountPercentage", value="", min="0")
@@ -99,3 +102,5 @@ block main
                 type="submit"
                 class="btn btn-primary"
             ) Add new product
+    link(rel="stylesheet", href="/admin/css/feature.css")
+    
