@@ -6,10 +6,6 @@ module.exports.priceNewProducts = (products)=> {
   return newProducts;
 }
 
-// module.exports.priceNewProduct = (product) => {
-//   const priceNew = (product.price*(100 - product.discountPercentage)/100).toFixed(0);
-//   return priceNew;
-// }
 
 module.exports.priceNew = (product) => {
   if (product && typeof product.price === 'number' && typeof product.discountPercentage === 'number') {

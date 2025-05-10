@@ -18,3 +18,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const quantityInput = document.querySelector('.quantity-input');
+//   const currentPriceElement = document.querySelector('.current-price');
+//   const originalPriceElement = document.querySelector('.original-price');
+//   const discountBadge = document.querySelector('.discount-badge');
+
+//   if (quantityInput && currentPriceElement) {
+//     quantityInput.addEventListener('change', function() {
+//       const quantity = parseInt(this.value);
+//       const basePrice = parseFloat(currentPriceElement.textContent.replace('$', ''));
+//       let newCalculatedPrice = basePrice * quantity;
+
+//       if (quantityInput && currentPriceElement) {
+//     quantityInput.addEventListener('change', function() {
+//       const quantity = parseInt(this.value);
+//       const basePrice = parseFloat(currentPriceElement.textContent.replace('$', ''));
+//       const newCalculatedPrice = basePrice * quantity;
+
+//       console.log('Số lượng:', quantity);
+//       console.log('Giá đơn vị:', basePrice);
+//       console.log('Giá mới:', newCalculatedPrice);
+
+//       currentPriceElement.textContent = `<span class="math-inline">\{newCalculatedPrice\.toFixed\(2\)\}</span>`;
+//     });
+//   }}
+// });
