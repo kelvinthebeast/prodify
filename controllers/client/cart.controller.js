@@ -27,7 +27,7 @@ module.exports.index = async (req, res) => {
 
 
     }
-    console.log(cart)
+    // console.log(cart)
     res.render("client/pages/cart/index.pug", {
         pageTitle: "Cart Page",
         cartDetail: cart
@@ -112,3 +112,22 @@ module.exports.delete = async (req, res) => {
     res.redirect(req.headers.referer || "/products");
   }
   
+
+// [GET] /cart/update/:productId/:quantity
+module.exports.update = async (req, res) => {
+
+  const productId = req.params.productId;
+  const quantity = parseInt(req.params.quantity);
+  const cartId = req.cookies.cartId;
+
+  await Cart.findOneAndUpdate(
+        { _id: cartId, "products.product_id": productId },
+        {
+          $set: {
+            "products.$.quantity": quantity
+          }
+        }
+      );
+  req.flash("success", "Cart updated quantity successfully~");
+  res.redirect(req.headers.referer || "/products");
+}

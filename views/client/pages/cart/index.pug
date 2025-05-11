@@ -3,8 +3,8 @@ include ../../mixins/box-head.pug
 include ../../mixins/alert.pug
 
 block main
-  +alert-success(5000)
-  +alert-error(5000)
+  +alert-success(6000)
+  +alert-error(6000)
   .container.my-3
     .row
       .col-12
@@ -48,3 +48,4 @@ block main
         h3.text-right Total Order: #{cartDetail.totalPrice}$
         .text-right.mt-3
           a.btn.btn-success(href="/checkout") CHECKOUT
+  script(src="/js/cart.js") 
