@@ -1,0 +1,50 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
+
+block main
+  +alert-success(5000)
+  +alert-error(5000)
+  .container.my-3
+    .row
+      .col-12
+      +box-head('Cart')
+    .row
+      .col-12
+        table.table.table-bordered
+          thead
+            tr
+              th No.
+              th Image
+              th Name
+              th Price
+              th Quantity
+              th Total Price
+              th Action
+          tbody
+            if(cartDetail.products.length > 0)
+              each item, index in cartDetail.products
+                tr
+                  td #{index + 1}
+                  td 
+                    img(src=item.productInfo.thumbnail, alt=item.productInfo.title, width="80px")
+                  td 
+                    a(href=`/products/detail/:${item.productInfo.slug}`) #{item.productInfo.title}
+                  td #{item.productInfo.priceNew}$
+                  td 
+                    input(
+                      type="number"
+                      name="quantity"
+                      value=item.quantity
+                      min="1"
+                      item-id=item.product_id
+                      style="width: 60px"
+                    )
+                  td #{item.totalPrice}
+                  td 
+                    a.btn.btn-danger(href=`/cart/delete/${item.product_id}`) Delete
+            else 
+              p No products in the cart
+        h3.text-right Total Order: #{cartDetail.totalPrice}$
+        .text-right.mt-3
+          a.btn.btn-success(href="/checkout") CHECKOUT

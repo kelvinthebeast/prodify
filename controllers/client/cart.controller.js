@@ -1,52 +1,40 @@
 const Cart = require("../../models/cart.model");
 
-// module.exports.addPost = async (req, res) => {
+const Product = require("../../models/product.model");
 
-//   const productId = req.params.productId;
-//   const cartId = req.cookies.cartId;
-//   const quantity = req.body.quantity || 1;
+const productsHelper = require("../../helpers/products");
 
-//   const cartObject = {
-//     productId: productId,
-//     quantity: quantity
-//   }
+//[get] /cart/
+module.exports.index = async (req, res) => {
+    const cartId = req.cookies.cartId;
+    const cart = await Cart.findOne({_id: cartId});
 
-//   // check if this product is already in the cart
-//   const cart = await Cart.findOne({ _id: cartId });
-//   const existProductCart = cart.products.find((item) => item.product_id == productId);
+    if(cart.products.length > 0) {
+
+        for (const item of cart.products) {
+            const productId = item.product_id;
+            const productInfo = await Product.findOne({_id: productId}).select("title thumbnail slug price discountPercentage");
+            
+
+            productInfo.priceNew = productsHelper.priceNew(productInfo);
+
+            item.productInfo = productInfo;
+            item.totalPrice = productInfo.priceNew * item.quantity
+        }
+
+        cart.totalPrice = cart.products.reduce((sum, item) => sum + item.totalPrice, 0);
 
 
-//   if (existProductCart) {
 
-//     const newQuantity = parseInt(existProductCart.quantity) + parseInt(quantity);
-//     await Cart.findOneAndUpdate(
-//       { _id: cartId, "products.product_id": productId },
-//       {
-//         $set: {
-//           "products.$.quantity": newQuantity
-//         }
-//       },
-//       { new: true }
-//     )
-//   } else {
-//     try {
-//     await Cart.findOneAndUpdate(
-//       { _id: cartId },
-//       {
-//         $addToSet: {
-//           products: cartObject
-//         }
-//       },
-//       { new: true }
-//     )
-//     req.flash("success", "Added to cart successfully~")
-//     res.redirect(req.headers.referer);
-//   } catch (error) {
-//     req.flash("error", "Cannot updated~")
-//     res.redirect("/products")
-    
-//   }
-//   }
+    }
+    console.log(cart)
+    res.render("client/pages/cart/index.pug", {
+        pageTitle: "Cart Page",
+        cartDetail: cart
+    })
+}
+
+
   
 // }
 
@@ -102,3 +90,25 @@ module.exports.addPost = async (req, res) => {
     res.redirect("/products");
   }
 };
+
+
+module.exports.delete = async (req, res) => {
+
+
+  const productId = req.params.productId;
+  const cartId = req.cookies.cartId;
+  
+    await Cart.updateOne({
+      _id: cartId
+    }, {
+      $pull: {
+        products: {
+          product_id: productId
+        }
+      }
+    })
+    
+    req.flash("success", "Product removed from cart successfully~");
+    res.redirect(req.headers.referer || "/products");
+  }
+  
