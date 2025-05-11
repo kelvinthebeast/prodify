@@ -13,6 +13,11 @@ module.exports.cartId = async (req, res, next) => {
         })
     } else {
         // continute to use the cart
-    }
+        const cart = await Cart.findOne({ _id: req.cookies.cartId });
+
+        cart.totalQuantity = cart.products.reduce((total, item) => total + item.quantity,0)
+    
+        res.locals.miniCart = cart;
+      }
     next();
 }

@@ -22,5 +22,7 @@ header.header
                             - const pathProduct = `/products`
                             a(href="/products") Product 
                             +sub-menu(layoutProductsCategory, pathProduct)
+                        li
+                            a(href="/cart") Cart (#{miniCart ? miniCart.totalQuantity : 0})
     link(rel="stylesheet", href="/css/submenu/submenu.css")
     link(rel="stylesheet", href="/css/submenu/searchbar.css")
