@@ -5,7 +5,9 @@ include ../../mixins/alert.pug
 block main
     +alert-success(5000)
     +alert-error(5000)
+    
 
+    #{order}
     .container.my-3
         .row
             .col-12
@@ -85,4 +87,4 @@ block main
                                 button(
                                     type="submit"
                                     class="btn btn-success btn-block"
-                                ) ĐẶT HÀNG
+                                ) Order

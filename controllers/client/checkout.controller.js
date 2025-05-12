@@ -22,7 +22,7 @@ module.exports.index = async (req, res) => {
 
         cart.totalPrice = cart.products.reduce((sum, item) => sum + item.totalPrice, 0);
 
-
+        console.log(cart)
     res.render("client/pages/checkout/index.pug", {
         pageTitle: "Đặt hàng",
         cartDetail: cart
@@ -85,8 +85,27 @@ module.exports.order = async (req, res) => {
 
 module.exports.success = async (req, res) => {
 
-    console.log(req.params.orderId);
+    // const order = await Order.findOne({_id: "681f801ccfbea4ca402ef0ce"});
+    const order = await Order.findOne({_id: req.params.orderId}).populate("products.product_id");
+    
+    if(!order) {
+        return res.status(404).send("Order not found");
+    }
+
+    for (const product of order.products) {
+        const productInfo = await Product.findOne({
+            _id: product.product_id 
+        }).select("title thumbnail slug price discountPercentage");
+    
+    product.productInfo = productInfo;
+    product.priceNew = productsHelper.priceNew(productInfo);
+    product.totalPrice = productInfo.priceNew * product.quantity;
+    }
+    order.totalPrice = order.products.reduce((sum, item) => sum + item.totalPrice, 0);
+
+    
     res.render("client/pages/checkout/success",{
-        pageTitle: "Trang đặt hàng thành công"
+        pageTitle: "Trang đặt hàng thành công",
+        order: order
     } )
 };

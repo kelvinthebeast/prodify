@@ -12,5 +12,5 @@ module.exports = (app) => {
   app.use("/", homeRoutes);
   app.use("/search", searchRoutes);
   app.use("/cart", cartRoutes);
-   app.use("/checkout", checkoutRoutes);
+  app.use("/checkout", checkoutRoutes);
 } 

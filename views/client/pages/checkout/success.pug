@@ -2,7 +2,59 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 
 block main
+  #{order}
   .container.my-3
     .row
       .col-12
         +box-head("Đặt hàng thành công")
+        //- Ensure proper indentation
+        .row
+          .col-12
+            p.text-muted
+              | Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại hỗ trợ.
+    .row 
+      .col-12
+        .alert.alert-success
+          | Cảm ơn bạn đã đặt hàng tại Shop. Đơn hàng của bạn đã được xác nhận và sẽ được giao trong thời gian sớm nhất.
+          br
+          | Mã đơn hàng của bạn là: #{orderId}
+          br
+          | Bạn có thể theo dõi tình trạng đơn hàng tại trang quản lý tài khoản của bạn.
+    if(order)
+      .row
+        .col-12
+          .card.p-4.my-4
+            table.table
+              tbody
+                tr
+                  th(scope="row") Họ tên:
+                  td #{order.userInfo.fullName}
+                tr
+                  th(scope="row") Số điện thoại:
+                  td #{order.userInfo.phone}
+                tr
+                  th(scope="row") Địa chỉ giao hàng:
+                  td #{order.userInfo.address}
+
+      .row
+        .col-12
+          h1(class="text-center my-4") Thông tin đơn hàng
+          table.table.table-bordered
+            thead
+              tr
+                th(scope="col") STT
+                th(scope="col") Ảnh
+                th(scope="col") Tên sản phẩm
+                th(scope="col") Giá
+                th(scope="col") Số lượng
+                th(scope="col") Tổng tiền
+            tbody
+              each item, index in order.products
+                tr
+                  td #{index + 1}
+                  td 
+                    img(src=item.productInfo.thumbnail, alt=item.productInfo.title, width="50")
+                  td #{item.productInfo.title}
+                  td #{item.price}
+                  td #{item.quantity}
+                  td #{item.totalPrice}
