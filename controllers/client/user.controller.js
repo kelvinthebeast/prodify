@@ -1,6 +1,8 @@
 
 const User = require("../../models/user.model")
 const md5 = require("md5");
+const generateHelper = require("../../helpers/generate");
+const ForgotPassword = require("../../models/forgot-password.model");
 module.exports.register = async (req, res) => {
 
 
@@ -72,8 +74,50 @@ module.exports.loginPost = async (req, res) => {
 
 }
 
+// / [get] /user/logout
 module.exports.logout = async (req, res) => {
 
   res.clearCookie('userToken')
   res.redirect("/user/login")
+}
+
+
+
+// / [get] /user/password/forgot 
+module.exports.forgotPassword = (req, res) => {
+
+    res.render("client/pages/forgot-password/forgot-password.pug", {
+        pageTitle: "Quên mật khẩu"
+    });
+};
+
+
+// / [post] /user/password/forgot
+
+module.exports.forgotPasswordPost = async (req, res) => {
+
+  const email = req.body.email;
+  const user = await User.findOne({
+    email: email,
+    deleted: false
+  })
+
+  if (!user) {
+    req.flash("error", "Email not existing");
+    res.redirect(`/user/password/forgot`)
+    return;
+  }
+  const otp = generateHelper.generateRandomString(8);
+  const objectForgotPassword = {
+    email: email, 
+    otp: otp,
+    expiredAt: Date.now()
+
+  }
+
+  const newForgotPassword = new ForgotPassword(objectForgotPassword);
+  await newForgotPassword.save();
+  console.log(newForgotPassword);
+  res.send("OKE FORGOT PASSWORDS");
+
 }
