@@ -24,5 +24,13 @@ header.header
                             +sub-menu(layoutProductsCategory, pathProduct)
                         li
                             a(href="/cart") Cart (#{miniCart ? miniCart.totalQuantity : 0})
+                        if(user)
+                            li 
+                                a(href="/user/logout") Đăng xuất
+                        else
+                            li 
+                                a(href="/user/register") Đăng ký
+                            li 
+                                a(href="/user/login") Đăng nhập 
     link(rel="stylesheet", href="/css/submenu/submenu.css")
     link(rel="stylesheet", href="/css/submenu/searchbar.css")
