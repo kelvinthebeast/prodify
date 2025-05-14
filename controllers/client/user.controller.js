@@ -129,7 +129,8 @@ module.exports.forgotPasswordPost = async (req, res) => {
   <p>Vui lòng không chia sẻ mã OTP này với bất kỳ ai khác.</p>
   <p>Thời gian hiệu lực của mã OTP là 5 phút.</p>`
 
-  await sendMailHelper.sendMail(email, subject, html);
+  // await sendMailHelper.sendMail(email, subject, html);
+  // because of security, we don't send mail in this case, search key nodemailer to setup
   req.flash("success", "Mã OTP đã được gửi đến email của bạn");
   res.redirect(`/user/password/otp?email=${email}`);
 
