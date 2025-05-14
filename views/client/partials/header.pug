@@ -27,6 +27,8 @@ header.header
                         if(user)
                             li 
                                 a(href="/user/logout") Đăng xuất
+                            li 
+                                a(href="/user/info") Tài Khoản #{user.fullName}                           
                         else
                             li 
                                 a(href="/user/register") Đăng ký

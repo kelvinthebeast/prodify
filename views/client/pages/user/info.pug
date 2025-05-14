@@ -1,0 +1,32 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main
+  .container.my-3
+    .row
+      .col-12
+        +box-head("Thông tin cá nhân")
+        .card.shadow.p-4.rounded.bg-light
+          h5.text-primary.mb-3 Thông tin tài khoản
+          ul.list-group
+            li.list-group-item
+              strong Họ và tên: 
+              | #{user.fullName}
+            li.list-group-item
+              strong Email: 
+              | #{user.email}
+            li.list-group-item
+              strong Token: 
+              | #{user.tokenUser}
+            li.list-group-item
+              strong Trạng thái: 
+              | #{user.status}
+            li.list-group-item
+              strong Đã xóa: 
+              | #{user.deleted ? 'Có' : 'Không'}
+            li.list-group-item
+              strong Ngày tạo: 
+              | #{user.createdAt.toLocaleString()}
+            li.list-group-item
+              strong Cập nhật gần nhất: 
+              | #{user.updatedAt.toLocaleString()}
