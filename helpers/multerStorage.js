@@ -10,6 +10,5 @@ module.exports = () => {
   }
 })
 
-  
   return storage
 }

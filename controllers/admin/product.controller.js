@@ -188,7 +188,6 @@ module.exports.postCreateProductPage = async (req, res) => {
   if (req.file) {
     req.body.thumbnail = `/uploads/${req.file.filename}`
   }
-  
 
   const newProduct = new Product(req.body);
   await newProduct.save()

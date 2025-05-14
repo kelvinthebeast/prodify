@@ -107,17 +107,78 @@ module.exports.forgotPasswordPost = async (req, res) => {
     res.redirect(`/user/password/forgot`)
     return;
   }
-  const otp = generateHelper.generateRandomString(8);
+  const otp = generateHelper.generateRandomNumber(6);
   const objectForgotPassword = {
     email: email, 
     otp: otp,
-    expiredAt: Date.now()
+    expiresAt: Date.now()
 
   }
 
   const newForgotPassword = new ForgotPassword(objectForgotPassword);
   await newForgotPassword.save();
-  console.log(newForgotPassword);
-  res.send("OKE FORGOT PASSWORDS");
+  // console.log(newForgotPassword);
+   res.redirect(`/user/password/otp?email=${email}`);
 
+}
+
+
+// [get] /user/password/otp 
+module.exports.otpPassword = async (req, res) => {
+    const email = req.query.email;
+
+    res.render("client/pages/user/otp-password", {
+        pageTitle: "Xác nhận mã OTP",
+        email: email
+    })
+}
+
+
+// [post] /user/password/otp 
+module.exports.otpPasswordPost = async (req, res) => {
+    const email = req.body.email;
+    const otp = req.body.otp;
+
+
+    const result = await ForgotPassword.findOne({ email: email, otp: otp });
+
+
+
+    if (!result) {
+        req.flash("error", "OTP wrong!");
+        return res.redirect(`/user/password/otp?email=${email}`);
+    }
+
+    // add token user
+    const user = await User.findOne({email: email});
+
+
+    res.cookie("userToken", user.tokenUser); 
+    // vì sao có bước này, vì khi qua bước đổi mật khẩu ngta có thể sẽ f12 và 
+    // sửa email khác lúc đó email đó bị sửa mk thì sao, nên là lấy tokenUser cái duy nhất trên máy check là an toàn nhất
+    res.redirect("/user/password/reset");
+}
+
+
+
+module.exports.resetPassword = async (req, res) => {
+    res.render("client/pages/user/reset-password.pug", {
+        pageTitle: "Đặt lại mật khẩu"
+    });
+}
+
+// [post] /user/password/reset 
+module.exports.resetPasswordPost = async (req, res) => {
+
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+
+    const tokenUser = req.cookies.tokenUser;
+
+    await User.updateOne({tokenUser: tokenUser}, {
+        password: md5(password)
+    })
+    req.flash("success","Resset password successfully");
+    res.redirect("/");
+  
 }
