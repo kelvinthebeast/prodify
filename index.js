@@ -44,7 +44,6 @@ adminRoute(app);
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
 
-
 app.set("views",`${__dirname}/views`);
 app.set("view engine", "pug");
 

@@ -25,5 +25,5 @@ module.exports = (app) => {
 
   app.use(PATH_ADMIN + `/my-account`,authMiddleware.requireAuth ,myAccountRoutes)
 
-  app.use(PATH_ADMIN + `/settings`, authMiddleware.requireAuth, settingRoutes)
+  // app.use(PATH_ADMIN + `/settings`, authMiddleware.requireAuth, settingRoutes)
 } 

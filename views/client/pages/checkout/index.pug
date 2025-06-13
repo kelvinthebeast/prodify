@@ -40,7 +40,11 @@ block main
                                     td #{item.productInfo.priceNew}$
                                     td #{item.quantity}
                                     td #{item.totalPrice}$
-                                    td Hành động ở đây
+                                    td 
+                                        a(
+                                            href=`/cart/remove/${item.productInfo._id}`
+                                            class="btn btn-danger"
+                                        ) Xóa
                         else
                             tr
                                 td(

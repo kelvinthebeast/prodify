@@ -2,7 +2,6 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 
 block main
-  #{order}
   .container.my-3
     .row
       .col-12
@@ -47,6 +46,7 @@ block main
                 th(scope="col") Tên sản phẩm
                 th(scope="col") Giá
                 th(scope="col") Số lượng
+                th(scope="col") Giảm giá
                 th(scope="col") Tổng tiền
             tbody
               each item, index in order.products
@@ -57,4 +57,5 @@ block main
                   td #{item.productInfo.title}
                   td #{item.price}
                   td #{item.quantity}
+                  td #{item.discountPercentage}
                   td #{item.totalPrice}
