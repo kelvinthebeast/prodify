@@ -3,7 +3,7 @@ const ProductCategory = require("../../models/product-category.model");
 const productsHelper = require("../../helpers/products");
 const productsCategoryHelper = require("../../helpers/products-category");
 module.exports.index = async (req, res) => {
-  const products = await Product.find({ deleted: false }).sort({ position: "desc" });
+  const products = await Product.find({ deleted: false, status:"active" }).sort({ position: "desc" });
   const newProducts = productsHelper.priceNewProducts(products);
   
   res.render("client/pages/products/index", {
