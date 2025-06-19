@@ -3,12 +3,34 @@ const ProductCategory = require("../../models/product-category.model");
 const productsHelper = require("../../helpers/products");
 const productsCategoryHelper = require("../../helpers/products-category");
 module.exports.index = async (req, res) => {
-  const products = await Product.find({ deleted: false, status:"active" }).sort({ position: "desc" });
+
+  let find = {
+    deleted: false,
+    status: "active"
+  }
+
+
+  // Pagination
+  const objectPagination = {
+    currentPage: parseInt(req.query.page) || 1,
+    limitItems: 6
+  }
+  objectPagination.skipItems = (objectPagination.currentPage - 1) * objectPagination.limitItems;
+  const products = await Product.find(find).sort({ position: "desc" })
+                                .limit(objectPagination.limitItems)
+                                .skip(objectPagination.skipItems)
+                                
+  
   const newProducts = productsHelper.priceNewProducts(products);
   
+
+  const countProduct = await Product.countDocuments(find);
+  const totalPage = Math.ceil(countProduct / objectPagination.limitItems);
+  objectPagination.totalPage = totalPage;
   res.render("client/pages/products/index", {
      pageTitle: "Products",
-     products: newProducts
+     products: newProducts,
+    pagination: objectPagination
     });
 }
 

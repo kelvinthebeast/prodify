@@ -336,3 +336,50 @@ tk: nhanlt07424 */
 }
 
 /* End show alert */
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  list-style: none;
+  gap: 8px;
+}
+
+.page-item {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.page-link {
+  background-color: white;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 6px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 6px;
+  min-width: 36px;
+}
+
+.page-link:hover {
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+.page-item.active .page-link {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.page-item.disabled .page-link {
+  color: #999;
+  pointer-events: none;
+  background-color: #f9f9f9;
+  border-color: #ddd;
+}
+
+/* End pagination */

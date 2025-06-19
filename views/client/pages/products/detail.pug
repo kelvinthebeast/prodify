@@ -88,10 +88,19 @@ block main
               button.read-less-btn Thu gọn
 
         .mt-4
-          a.btn.btn-warning.btn-lg.px-4.back-link(href="/products")
-            i.bi.arrow-left-circle-fill.me-2
+          a.btn.btn-outline-secondary.btn-lg.px-4.back-link.text-dark(
+            href="/products",
+            style="font-weight: 600; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+          )
+            i.bi.arrow-left-circle-fill.me-3(style="font-size: 1.5rem; color: #495057;")
             | Quay lại
 
+          a.btn.btn-outline-primary.btn-lg.px-4.ms-3.back-link.text-primary(
+            href="/reviews",
+            style="font-weight: 500; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+          )
+            i.bi.bi-chat-left-text.me-2(style="font-size: 1.3rem;")
+            | Xem đánh giá
   script(src="/admin/js/product.js")
   script(src="/js/detailPage.js") 
   link(rel="stylesheet", href="/css/detailPage.css")
