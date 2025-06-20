@@ -15,6 +15,14 @@ module.exports.index = async (req, res) => {
     currentPage: parseInt(req.query.page) || 1,
     limitItems: 6
   }
+
+  // end pagiantion
+  // object search
+  if (req.query.keyword && req.query.keyword.trim() !== "") {
+    find.title = { $regex: req.query.keyword, $options: "i" }; 
+  }
+  // end search
+
   objectPagination.skipItems = (objectPagination.currentPage - 1) * objectPagination.limitItems;
   const products = await Product.find(find).sort({ position: "desc" })
                                 .limit(objectPagination.limitItems)
@@ -30,7 +38,8 @@ module.exports.index = async (req, res) => {
   res.render("client/pages/products/index", {
      pageTitle: "Products",
      products: newProducts,
-    pagination: objectPagination
+     pagination: objectPagination,
+     keyword: req.query.keyword || "",
     });
 }
 
