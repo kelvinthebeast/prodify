@@ -2,46 +2,57 @@ const Product = require("../../models/product.model");
 const ProductCategory = require("../../models/product-category.model");
 const productsHelper = require("../../helpers/products");
 const productsCategoryHelper = require("../../helpers/products-category");
+const searchHelper = require("../../helpers/search")
 module.exports.index = async (req, res) => {
+  try {
+    let find = {
+      deleted: false,
+      status: "active"
+    };
 
-  let find = {
-    deleted: false,
-    status: "active"
-  }
+    // Pagination
+    const objectPagination = {
+      currentPage: parseInt(req.query.page) || 1,
+      limitItems: 6
+    };
 
+    // Object search
+    const objectSearch = searchHelper(req.query);
+    if (objectSearch.regex) {
+      find.title = objectSearch.regex;
+    }
 
-  // Pagination
-  const objectPagination = {
-    currentPage: parseInt(req.query.page) || 1,
-    limitItems: 6
-  }
+    // Đếm tổng số sản phẩm thỏa điều kiện tìm kiếm
+    const countProduct = await Product.countDocuments(find);
 
-  // end pagiantion
-  // object search
-  if (req.query.keyword && req.query.keyword.trim() !== "") {
-    find.title = { $regex: req.query.keyword, $options: "i" }; 
-  }
-  // end search
+    // Tính tổng số trang
+    const totalPage = Math.ceil(countProduct / objectPagination.limitItems);
+    objectPagination.totalPage = totalPage;
 
-  objectPagination.skipItems = (objectPagination.currentPage - 1) * objectPagination.limitItems;
-  const products = await Product.find(find).sort({ position: "desc" })
-                                .limit(objectPagination.limitItems)
-                                .skip(objectPagination.skipItems)
-                                
-  
-  const newProducts = productsHelper.priceNewProducts(products);
-  
+    // Tính số sản phẩm cần bỏ qua (skip)
+    objectPagination.skipItems = (objectPagination.currentPage - 1) * objectPagination.limitItems;
 
-  const countProduct = await Product.countDocuments(find);
-  const totalPage = Math.ceil(countProduct / objectPagination.limitItems);
-  objectPagination.totalPage = totalPage;
-  res.render("client/pages/products/index", {
-     pageTitle: "Products",
-     products: newProducts,
-     pagination: objectPagination,
-     keyword: req.query.keyword || "",
+    // Lấy danh sách sản phẩm theo phân trang và điều kiện tìm kiếm
+    const products = await Product.find(find)
+      .sort({ position: "desc" })
+      .limit(objectPagination.limitItems)
+      .skip(objectPagination.skipItems);
+
+    // Xử lý giá sản phẩm (nếu có helper)
+    const newProducts = productsHelper.priceNewProducts(products);
+
+    // Render view
+    res.render("client/pages/products/index", {
+      pageTitle: "Products",
+      products: newProducts,
+      pagination: objectPagination,
+      keyword: objectSearch.keyword,
     });
-}
+  } catch (error) {
+    console.error("Error in products index:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
 
 module.exports.getDetailPage = async (req, res) => {
   try {
