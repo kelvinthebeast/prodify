@@ -90,23 +90,25 @@ block main
                       href="javascript:;" class="badge badge-warning text-dark button-change-status"
                       ) Inactive
                 td 
-                  a(
-                    href=`/admin/products/detail/${item.id}`
-                    class="btn btn-warning btn-sm text-dark"
-                    ) Detail
-
-                  if(role.permissions.includes('products_edit'))
+                  .d-flex
                     a(
-                      href=`/admin/products/edit/${item.id}`
-                      class="btn btn-warning btn-sm text-dark"
-                      ) Edit
+                      href=`/admin/products/detail/${item.id}`
+                      class="btn btn-warning btn-sm text-dark me-2"
+                      ) Detail
 
-                  if(role.permissions.includes('products_delete'))
-                    button(
-                      class="btn btn-danger btn-sm ms-2"
-                      button-delete 
-                      data-id = item.id
-                      ) Delete
+                    if(role.permissions.includes('products_edit'))
+                      a(
+                        href=`/admin/products/edit/${item.id}`
+                        class="btn btn-success btn-sm text-light bold"
+                        ) Edit
+
+                    if(role.permissions.includes('products_delete'))
+                      button(
+                        class="btn btn-danger btn-sm ms-2"
+                        button-delete 
+                        data-id = item.id
+                        ) Delete
+                
     +pagination(pagination)
   else 
     h1 NOT FOUND  

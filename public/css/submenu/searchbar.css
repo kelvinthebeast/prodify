@@ -1,0 +1,143 @@
+.search-bar {
+  display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử con */
+  align-items: center; /* Căn chỉnh các phần tử theo chiều dọc ở giữa */
+}
+
+.search-bar form {
+  display: flex; /* Tiếp tục sử dụng flexbox bên trong form */
+  width: 100%; /* Form chiếm toàn bộ chiều rộng của .search-bar */
+}
+
+.search-bar .form-group {
+  display: flex; /* Tiếp tục sử dụng flexbox cho form-group */
+  width: 100%;
+  margin-bottom: 0 !important; /* Loại bỏ margin bottom không cần thiết */
+}
+
+.search-bar .form-control {
+  flex-grow: 1; /* Ô input sẽ chiếm phần lớn không gian còn lại */
+  border-radius: 5px; /* Bo tròn đều các góc */
+  padding: 0.75rem 1rem; /* Thêm padding cho dễ nhìn */
+  margin-right: 5px; /* Thêm một chút khoảng cách bên phải ô input */
+  border: 1px solid #ced4da; /* Viền tiêu chuẩn */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Thêm transition cho hiệu ứng focus */
+}
+
+.search-bar .form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.search-bar .btn-primary {
+  border-radius: 5px; /* Bo tròn đều các góc */
+  padding: 0.75rem 1rem; /* Padding tương tự input */
+  white-space: nowrap; /* Ngăn nút bị xuống dòng nếu text quá dài */
+  margin-left: 5px; /* Thêm một chút khoảng cách bên trái nút */
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-bar .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.search-bar .btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* Optional: Adjust width for responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%; /* Make it full width on smaller screens */
+    margin-top: 10px; /* Add some space above on smaller screens */
+  }
+
+  .search-bar form {
+    width: 100%;
+  }
+
+  .search-bar .form-control {
+    margin-right: 0; /* Loại bỏ margin-right trên màn hình nhỏ */
+    border-radius: 5px 5px 0 0; /* Bo tròn góc trên trên màn hình nhỏ */
+  }
+
+  .search-bar .btn-primary {
+    margin-left: 0; /* Loại bỏ margin-left trên màn hình nhỏ */
+    border-radius: 0 0 5px 5px; /* Bo tròn góc dưới trên màn hình nhỏ */
+  }
+
+  .search-bar .form-group {
+    flex-direction: column; /* Stack input và button theo chiều dọc trên màn hình nhỏ */
+  }
+}
+.search-bar {
+  display: flex;
+  justify-content: flex-end; /* Đẩy nội dung về bên phải */
+  width: 50%; /* Giảm chiều rộng xuống một nửa */
+  margin-right: 20px; /* Tạo khoảng cách với mép trình duyệt bên phải (điều chỉnh theo ý muốn) */
+  align-items: center; /* Căn chỉnh các phần tử theo chiều dọc ở giữa */
+}
+
+.search-bar form {
+  display: flex;
+  width: 100%; /* Form chiếm toàn bộ chiều rộng của .search-bar (50% của container cha) */
+}
+
+.search-bar .form-group {
+  display: flex;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.search-bar .form-control {
+  flex-grow: 1;
+  border-radius: 5px;
+  padding: 0.75rem 1rem;
+  margin-right: 5px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-bar .form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.search-bar .btn-primary {
+  border-radius: 5px;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+  margin-left: 5px;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-bar .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.search-bar .btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* Optional: Adjust responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%; /* Trở lại full width trên màn hình nhỏ */
+    margin-right: 0; /* Loại bỏ margin-right trên màn hình nhỏ */
+    margin-top: 10px;
+    justify-content: flex-start; /* Căn trái lại trên màn hình nhỏ (tùy chọn) */
+  }
+}

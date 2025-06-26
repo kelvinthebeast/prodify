@@ -3,6 +3,147 @@ extends ../../layouts/default.pug
 block main
     h1 Analytics Dashboard
 
-    #{user} 
-    div -----------------
-    #{role}
+    .container-center
+        .card.mb-4
+            .card-header Personal Information
+            .card-body.text-center
+                if user.avatar
+                    img.avatar(src=user.avatar alt="Avatar")
+                if user.fullName
+                    p
+                        | fullName: 
+                        b #{user.fullName}
+                if user.email
+                    p
+                        | Email: 
+                        b #{user.email}
+                if user.phone
+                    p
+                        | Phone: 
+                        b #{user.phone}
+                if role.title
+                    p
+                        | Role: 
+                        b #{role.title}
+
+    .container-center
+        .row
+            .col-3
+                .card.mb-4
+                    .card-header Product Categories
+                    .card-body
+                        p Total: 
+                            b #{statistic.categoryProduct.total}
+                        p Active: 
+                            b #{statistic.categoryProduct.active}
+                        p Inactive: 
+                            b #{statistic.categoryProduct.inactive}
+            .col-3
+                .card.mb-4
+                    .card-header Products
+                    .card-body
+                        p Total: 
+                            b #{statistic.product.total}
+                        p Active: 
+                            b #{statistic.product.active}
+                        p Inactive: 
+                            b #{statistic.product.inactive}
+            .col-3
+                .card.mb-4
+                    .card-header Admin Accounts
+                    .card-body
+                        p Total: 
+                            b #{statistic.account.total}
+                        p Active: 
+                            b #{statistic.account.active}
+                        p Inactive: 
+                            b #{statistic.account.inactive}
+            .col-3
+                .card.mb-4
+                    .card-header Client Accounts
+                    .card-body
+                        p Total: 
+                            b #{statistic.user.total}
+                        p Active: 
+                            b #{statistic.user.active}
+                        p Inactive: 
+                            b #{statistic.user.inactive}
+
+    style.
+        .container-center {
+            width: 100%;
+            max-width: 1400px;
+            margin: 30px auto;
+            padding-left: 24px;
+            padding-right: 24px;
+            box-sizing: border-box;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            width: 100%;
+        }
+        .card-header {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .card-body p {
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+            color: #555;
+        }
+        .card-body p b {
+            color: #2980b9;
+            font-weight: 700;
+        }
+        img.avatar {
+            display: block;
+            margin: 0 auto 20px auto;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .col-3 {
+            width: 25%;
+            padding-left: 12px;
+            padding-right: 12px;
+            box-sizing: border-box;
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 1200px) {
+            .container-center {
+                max-width: 1000px;
+            }
+            .col-3 {
+                width: 50%;
+            }
+        }
+        @media (max-width: 768px) {
+            .container-center {
+                max-width: 100%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            .col-3 {
+                width: 100%;
+            }
+        }

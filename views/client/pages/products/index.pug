@@ -2,6 +2,7 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 include ../../mixins/product-item.pug 
 include ../../mixins/product-layout.pug
+include ../../mixins/pagination.pug
 block main
   
     
@@ -14,5 +15,6 @@ block main
         .col-12
           //- +box-head("Promote products")
           +product-grid(products)
-
+        .col-12
+          +pagination(pagination)
     

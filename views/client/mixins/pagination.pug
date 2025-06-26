@@ -1,0 +1,15 @@
+mixin pagination(pagination)
+  nav
+    ul.pagination
+      if pagination && pagination.currentPage > 1
+        li.page-item
+          button.page-link(type="button" button-pagination=pagination.currentPage - 1) ←
+
+      if pagination
+        - for (var i = 1; i <= pagination.totalPage; i++)
+          li.page-item(class=(pagination.currentPage == i ? "active" : ""))
+            button.page-link(type="button" button-pagination=i) #{i}
+
+      if pagination && pagination.currentPage < pagination.totalPage
+        li.page-item
+          button.page-link(type="button" button-pagination=pagination.currentPage + 1) →

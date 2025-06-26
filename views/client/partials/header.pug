@@ -7,9 +7,13 @@ header.header
                     a(href="/")
                         //- Uncomment the image below if logo is available
                         // img(src="/images/logo.svg", alt="Logo")
-                        strong.logo-title Prodify
-
-            .col-9
+                        strong.logo-title Bookstore online
+            .col-5.search-bar
+                form(action="/search", method="GET").col-5
+                    .form-group.d-flex.mb-0
+                        input(type="text", placeholder="Enter keyword...", class="form-control", name="keyword", value=keyword)
+                        button(type="submit", class="btn btn-primary") Find
+            .col-4
                 .inner-menu
                     ul
                         li
@@ -18,4 +22,18 @@ header.header
                             - const pathProduct = `/products`
                             a(href="/products") Product 
                             +sub-menu(layoutProductsCategory, pathProduct)
+                        li
+                            a(href="/cart") Cart (#{miniCart ? miniCart.totalQuantity : 0})
+                        if(user)
+                            li 
+                                a(href="/user/logout") Đăng xuất
+                            li 
+                                a(href="/user/info") Tài Khoản #{user.fullName}                           
+                        else
+                            li 
+                                a(href="/user/register") Đăng ký
+                            li 
+                                a(href="/user/login") Đăng nhập 
+                            
     link(rel="stylesheet", href="/css/submenu/submenu.css")
+    link(rel="stylesheet", href="/css/submenu/searchbar.css")
